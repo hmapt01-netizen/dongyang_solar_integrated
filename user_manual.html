@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>동양연합 영농형 태양광 AI 영농이행 관제 시스템 - 사용자 운영 설명서</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800;900&display=swap');
+    
+    @page {
+      size: A4;
+      margin: 15mm 15mm 15mm 15mm;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1e293b;
+      background: #f8fafc;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .manual-container {
+      max-width: 840px;
+      margin: 30px auto;
+      background: #ffffff;
+      padding: 40px 50px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Print specific styles */
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .manual-container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+    }
+
+    .header-banner {
+      border-bottom: 3px solid #3d5a47;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-title h1 {
+      font-size: 26px;
+      font-weight: 900;
+      color: #1d3324;
+      margin: 0 0 6px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .header-title p {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .meta-tag {
+      background: #edf4ef;
+      color: #3d5a47;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid #cce0d2;
+    }
+
+    .print-btn-bar {
+      position: sticky;
+      top: 20px;
+      z-index: 999;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, #3d5a47, #2d4536);
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(61, 90, 71, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .btn-print:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(61, 90, 71, 0.5);
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 900;
+      color: #1d3324;
+      border-left: 4px solid #3d5a47;
+      padding-left: 12px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #334155;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    p, li {
+      font-size: 13.5px;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-top: 6px;
+      margin-bottom: 14px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .box-info {
+      background: #f8faf9;
+      border: 1px solid #cce0d2;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .box-info strong {
+      color: #1d3324;
+    }
+
+    .box-warning {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      color: #92400e;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 12.5px;
+    }
+
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 800;
+    }
+
+    .step-badge {
+      display: inline-block;
+      background: #3d5a47;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 6px;
+    }
+
+    .shortcut-key {
+      background: #e2e8f0;
+      color: #1e293b;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: 800;
+      font-size: 12px;
+      border: 1px solid #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="manual-container">
+    
+    <div class="print-btn-bar no-print">
+      <button class="btn-print" onclick="window.print()">🖨️ PDF 인쇄 / 다운로드 (Ctrl+P)</button>
+    </div>
+
+    <!-- Header Banner -->
+    <div class="header-banner">
+      <div class="header-title">
+        <h1>영농형 태양광 종합관리 플랫폼</h1>
+        <p>AI 기반 영농이행 실시간 관제 및 정기점검 시스템 사용자 운영 설명서</p>
+      </div>
+      <div class="meta-tag">개정판 v2027.04</div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="box-info">
+      <strong>📋 주요 사용자 설명서 목차</strong>
+      <ol style="margin-bottom:0;">
+        <li>시스템 개요 및 관제 대상 사업장</li>
+        <li>시스템 로그인 및 세션 관리 (인증 절차)</li>
+        <li>상단 헤더 및 반응형 발전소 선택 드롭다운</li>
+        <li>좌측 메인 관제 메뉴별 상세 기능 (6대 메뉴)</li>
+        <li>인터랙티브 강원 관제 지도 조작 및 필터링</li>
+        <li>스마트폰 폰뷰 모드 및 단축키 활용</li>
+      </ol>
+    </div>
+
+    <!-- 제 1 장 -->
+    <h2>1. 시스템 개요 및 관제 대상 사업장</h2>
+    <p>본 플랫폼은 강원특별자치도 관내 영농형 태양광 발전소의 AI 영상 기반 실시간 영농활동 탐지, 이행지수 산출, 법령 준수사항 검토 및 행정 보고서 자동 생성을 위한 통합 관제 시스템입니다.</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>사업장 코드</th>
+          <th>사업장 명칭</th>
+          <th>설비 용량</th>
+          <th>위치 (지역)</th>
+          <th>초기 이행 상태</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>[12139]</strong></td>
+          <td>온누리3,4</td>
+          <td>200 kW</td>
+          <td>강원특별자치도 원주시</td>
+          <td><span style="color:#b45309; font-weight:800;">관찰 필요 (85점)</span></td>
+        </tr>
+        <tr>
+          <td><strong>[12138]</strong></td>
+          <td>온누리1,2</td>
+          <td>200 kW</td>
+          <td>강원특별자치도 원주시</td>
+          <td><span style="color:#15803d; font-weight:800;">정상 이행 (92점)</span></td>
+        </tr>
+        <tr>
+          <td><strong>[12140]</strong></td>
+          <td>온누리5,6</td>
+          <td>300 kW</td>
+          <td>강원특별자치도 원주시</td>
+          <td><span style="color:#b45309; font-weight:800;">관찰 필요 (88점)</span></td>
+        </tr>
+        <tr>
+          <td><strong>[12141]</strong></td>
+          <td>청정영농형1호</td>
+          <td>500 kW</td>
+          <td>강원특별자치도 횡성군</td>
+          <td><span style="color:#15803d; font-weight:800;">정상 이행 (96점)</span></td>
+        </tr>
+        <tr>
+          <td><strong>[12142]</strong></td>
+          <td>소양강 영농태양광</td>
+          <td>150 kW</td>
+          <td>강원특별자치도 춘천시</td>
+          <td><span style="color:#15803d; font-weight:800;">정상 이행 (94점)</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 제 2 장 -->
+    <h2>2. 시스템 로그인 및 세션 관리</h2>
+    <p><span class="step-badge">STEP 1</span> <strong>초기 시스템 접속</strong></p>
+    <p>웹 브라우저로 접속 시 딥 블루 톤의 보안 로그인 팝업 모달이 화면 중앙에 나타납니다.</p>
+
+    <p><span class="step-badge">STEP 2</span> <strong>관리자 계정 인증</strong></p>
+    <ul>
+      <li><strong>로그인 권한:</strong> <code>🛡️ 통합 관제 관리자 (Admin)</code> 전용 권한으로 고정 배치되어 있습니다.</li>
+      <li><strong>기본 계정 정보:</strong> 아이디 <code>admin</code> / 비밀번호 <code>1234</code> 가 자동 입력되어 있습니다.</li>
+      <li><strong>로그인 실행:</strong> 하단의 그린 그라데이션 <code>로그인</code> 버튼을 클릭하면 세션이 생성되며 관제 대시보드로 이동합니다.</li>
+    </ul>
+
+    <p><span class="step-badge">STEP 3</span> <strong>회원가입 탭</strong></p>
+    <p>신규 담당자의 경우 상단 <code>회원가입</code> 탭을 클릭하여 성명, 이메일, 비밀번호를 입력 후 신청하면 관리자 승인 절차를 거치게 됩니다.</p>
+
+    <p><span class="step-badge">STEP 4</span> <strong>로그아웃 세션 종료</strong></p>
+    <p>상단 우측의 <code>로그아웃</code> 버튼을 클릭하면 활성 세션이 안전하게 제거되고 즉시 로그인 팝업 창으로 복귀합니다.</p>
+
+    <!-- 제 3 장 -->
+    <h2>3. 상단 헤더 및 발전소 선택 조작</h2>
+    <p>헤더는 접속 기기 환경에 따라 최적의 레이아웃으로 자동 전환됩니다.</p>
+
+    <ul>
+      <li><strong>PC 데스크톱 환경 (1행 가로 배치):</strong>
+        <br>좌측에 <code>영농형 태양광 종합관리</code> 제목이 위치하며, 중앙에 <code>🌐 [전체 사업장] 통합 관제 (5개 발전소)</code> 발전소 선택 드롭다운이 로고와 같은 줄에 시원하게 위치합니다.
+      </li>
+      <li><strong>스마트폰 폰뷰 환경 (2행 높이 96px 구조):</strong>
+        <br>1행에 로고와 우측 버튼이 배치되고, 2행 전체 폭에 발전소 선택 드롭다운이 확장 표출되어 좁은 화면에서도 텍스트가 잘리지 않습니다.
+      </li>
+      <li><strong>발전소 변경:</strong>
+        <br>드롭다운에서 특정 사업장(예: <code>[12139] 온누리3,4</code>)을 선택하면 <code>사업장 상세</code> 화면으로 즉시 전환되며 해당 발전소의 KPI 데이터가 실시간 렌더링됩니다.
+      </li>
+    </ul>
+
+    <!-- 제 4 장 -->
+    <div class="page-break"></div>
+    <h2>4. 좌측 메인 관제 메뉴별 상세 기능</h2>
+    
+    <h3>4.1 종합 대시보드 (Dashboard)</h3>
+    <p>5개 전체 사업장의 실시간 영농이행 관제 현황을 한눈에 파악할 수 있는 메인 화면입니다.</p>
+    <ul>
+      <li><strong>상단 KPI 5대 카드:</strong> 전체 사업장(5), 정상 이행(3), 관찰 필요(2), 현장점검(0), 시정 검토(0). 카드를 클릭하면 지도가 해당 상태 사업장으로 실시간 필터링됩니다.</li>
+      <li><strong>강원 관제 지도 & 우선 확인 대상:</strong> 지도 마커 및 위험도 순 우선 확인 대상을 표출합니다.</li>
+      <li><strong>최근 정기점검 리포트 현황:</strong> 월간 리포트 결과 목록 및 <code>보기</code> 버튼을 통한 팝업 미리보기를 제공합니다.</li>
+    </ul>
+
+    <h3>4.2 사업장 상세 (Site Detail)</h3>
+    <p>선택된 단일 사업장의 정밀 관제 및 허가 정보 비교를 제공합니다.</p>
+    <ul>
+      <li><strong>2x2 서브탭 바 (1:1 스무스 스크롤):</strong>
+        <br><code>개요</code>, <code>영농활동</code>, <code>허가·계획</code>, <code>행정조치</code> 서브탭 클릭 시 해당 섹션 위치로 1:1 매칭되어 원터치 스크롤 이동합니다.
+      </li>
+      <li><strong>허가 정보 비교:</strong> 신고 작물(벼, 콩)과 AI 확인 작물의 일치 여부 및 실경작 면적 비율을 검증합니다.</li>
+    </ul>
+
+    <h3>4.3 이상징후 센터 (Risk Center)</h3>
+    <p>6대 관찰 항목(장기 무활동, 카메라 장애, 휴경 의심, 농기계 미탐지 등) 및 법령 준수사항을 다각도로 검토합니다.</p>
+
+    <h3>4.4 영상 증빙 검토 (Video Evidence)</h3>
+    <p>현장 AI 카메라(CAM 01~04) 수신 캡처 썸네일과 바운딩 박스를 검토하고 담당자가 <code>인정</code>, <code>보류</code>, <code>오탐</code> 판정을 내릴 수 있습니다.</p>
+
+    <h3>4.5 리포트 센터 (Report Center)</h3>
+    <p>강원특별자치도 제출용 6페이지 정기점검 행정보고서를 미리보고 상단 <code>1-Click PDF 인쇄 / 다운로드</code> 버튼으로 인쇄합니다.</p>
+
+    <h3>4.6 현장점검 (Inspection)</h3>
+    <p>관찰 필요 또는 시정 조치가 필요한 사업장에 점검관을 지정하고 일정을 수립합니다.</p>
+
+    <!-- 제 5 장 -->
+    <h2>5. 강원 관제 지도 조작 및 뱃지 필터링</h2>
+    <div class="box-info">
+      <strong>📍 지도 상단 뱃지 버튼 클릭 필터링 가이드</strong>
+      <ul>
+        <li><strong><code>● 정상 (3)</code> 뱃지 클릭:</strong> 지도에 정상 사업장 3개만 필터링되어 나타나며 전체 구도가 줌인 자동 조율됩니다.</li>
+        <li><strong><code>● 관찰 (2)</code> 뱃지 클릭:</strong> 관찰 필요 사업장(온누리3,4 및 온누리5,6) 2개만 필터링되어 포커싱 줌인됩니다.</li>
+        <li><strong>마커 핀 클릭:</strong> 마커 핀 클릭 시 해당 사업장의 상세 관제 화면으로 즉시 전환됩니다.</li>
+        <li><strong>지도 모드 전환:</strong> <code>🗺️ 일반</code> 지도 및 <code>🛰️ 위성</code> 지도 타일 스위칭 버튼을 지원합니다.</li>
+      </ul>
+    </div>
+
+    <!-- 제 6 장 -->
+    <h2>6. 스마트폰 폰뷰 모드 및 단축키 활용</h2>
+    <p>PC 환경에서 스마트폰 모바일 화면 모드를 테스트할 수 있는 단축키 기능을 제공합니다.</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>단축키</th>
+          <th>기능 설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="shortcut-key">F2</span></td>
+          <td>스마트폰 모바일 폰뷰 시뮬레이터 토글 (켜기 / 끌기)</td>
+        </tr>
+        <tr>
+          <td><span class="shortcut-key">Ctrl</span> + <span class="shortcut-key">M</span></td>
+          <td>모바일 폰뷰 시뮬레이터 토글 (한글 키 <code>Ctrl + ㅡ</code> 동일 지원)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box-warning">
+      <strong>📱 실제 모바일 기기 접속 시:</strong>
+      <br>Android, iPhone, iPad 등 실제 모바일 기기로 접속 시에는 별도 단축키 조작 없이 <strong>자동으로 폰뷰 모드로 감지 및 전환</strong>되어 하단 3x2 그리드 관제 메뉴와 2행 헤더가 표출됩니다.
+    </div>
+
+    <div style="margin-top:40px; padding-top:20px; border-top:1px solid #e2e8f0; text-align:center; font-size:12px; color:#94a3b8; font-weight:700;">
+      동양연합 영농형 태양광 AI 영농이행 관제 시스템 · Copyright © 2027 (주)동양연합엔지니어링 All rights reserved.
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,1009 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>?숈뼇?고빀 ?곷냽???쒖뼇愿??듯빀 ?쒖뒪???곕룞 洹쒓꺽??& DB 留덉뒪??媛?대뱶</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Mermaid.js -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+
+  <!-- MathJax for KaTeX math rendering -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root {
+      --primary: #2d5a3f;
+      --primary-dark: #1e3d2b;
+      --primary-light: #eef6f0;
+      --accent: #d06245;
+      --accent-blue: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --code-bg: #0f172a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding-bottom: 100px;
+    }
+
+    .top-hero {
+      background: linear-gradient(135deg, #1e3d2b 0%, #2d5a3f 100%);
+      color: #ffffff;
+      padding: 45px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+    .top-hero-container { max-width: 1280px; margin: 0 auto; }
+    .badge-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .top-hero h1 { font-size: 30px; font-weight: 900; margin-bottom: 10px; letter-spacing: -0.5px; }
+    .top-hero p { font-size: 15px; opacity: 0.92; max-width: 900px; }
+
+    .layout-container {
+      max-width: 1280px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      height: fit-content;
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+    .sidebar-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .sidebar-menu { list-style: none; }
+    .sidebar-menu li { margin-bottom: 4px; }
+    .sidebar-menu a {
+      display: block;
+      padding: 8px 12px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .sidebar-menu a:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .content-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+    .section-header {
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-header h2 { font-size: 22px; font-weight: 900; color: var(--primary-dark); }
+    .section-header i { font-size: 22px; color: var(--primary); }
+    .sub-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 28px 0 8px 0;
+      padding-left: 10px;
+      border-left: 3.5px solid var(--primary);
+    }
+
+    /* Table Description Box */
+    .table-desc {
+      background: #f1f8f4;
+      border-left: 4px solid #2d5a3f;
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+      color: #1e3d2b;
+      font-weight: 700;
+      margin: 10px 0 12px 0;
+      line-height: 1.5;
+    }
+    .table-desc i { color: #2d5a3f; margin-right: 4px; }
+
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 24px 0;
+      font-size: 13px;
+    }
+    .doc-table th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 800;
+      padding: 11px 14px;
+      text-align: left;
+      border-top: 1px solid var(--border);
+      border-bottom: 2px solid var(--border);
+    }
+    .doc-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: #1e293b;
+      vertical-align: middle;
+    }
+    .doc-table tr:hover { background: #f8fafc; }
+    .pk-badge {
+      background: #fee2e2;
+      color: #dc2626;
+      font-weight: 800;
+      font-size: 10.5px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #fca5a5;
+    }
+    .fk-badge {
+      background: #e0f2fe;
+      color: #0284c7;
+      font-weight: 800;
+      font-size: 10.5px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #bae6fd;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      border-radius: 6px;
+    }
+    .badge-success { background: #dcfce7; color: #15803d; }
+    .badge-warning { background: #fef3c7; color: #b45309; }
+    .badge-danger { background: #fee2e2; color: #b91c1c; }
+    .badge-info { background: #e0f2fe; color: #0369a1; }
+
+    .callout {
+      background: #f0fdf4;
+      border-left: 4px solid #16a34a;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 18px 0;
+      font-size: 13.5px;
+      color: #166534;
+      font-weight: 600;
+    }
+
+    .calc-card {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+      border: 1px solid #334155;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .calc-input-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .calc-input-box label {
+      display: block;
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .calc-input-box input {
+      width: 100%;
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #38bdf8;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 8px 12px;
+      border-radius: 8px;
+      outline: none;
+    }
+    .calc-result-box {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+    .calc-result-box .res-val {
+      font-size: 20px;
+      font-weight: 900;
+      color: #38bdf8;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 4px;
+    }
+
+    pre {
+      background: var(--code-bg);
+      color: #e2e8f0;
+      padding: 16px 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      line-height: 1.5;
+      margin: 14px 0;
+      border: 1px solid #334155;
+    }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+    @media (max-width: 960px) {
+      .layout-container { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Hero Header -->
+  <header class="top-hero">
+    <div class="top-hero-container">
+      <span class="badge-tag"><i class="fa-solid fa-solar-panel"></i> ?숈뼇?고빀 O&M 怨듭떇 ?곕룞 留덉뒪??媛?대뱶</span>
+      <h1>?숈뼇?고빀 ?곷냽???쒖뼇愿??듯빀 ?곕룞 洹쒓꺽??& DB 紐낆꽭??/h1>
+      <p>MRT_DB ?ㅽ궎留??뺤쓽 쨌 ?좉퇋 ?곷냽???됱젙 DB 5醫??ㅺ퀎 쨌 ?ㅼ떆媛?SMP/REC 湲덉쑖 ?먮룞 怨꾩궛 ?붿쭊 쨌 諛깆뿏??REST API 7? 洹쒓꺽 珥앸쭩??/p>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="layout-container">
+    
+    <!-- Left Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-title">臾몄꽌 諛붾줈媛湲?/div>
+      <ul class="sidebar-menu">
+        <li><a href="#sec-overview"><i class="fa-solid fa-network-wired"></i> 1. ?쒖뒪???꾪궎?띿쿂</a></li>
+        <li><a href="#sec-rbac"><i class="fa-solid fa-user-shield"></i> 2. ?ъ슜??沅뚰븳(RBAC)</a></li>
+        <li><a href="#sec-financial"><i class="fa-solid fa-calculator"></i> 3. 湲덉쑖쨌?섍꼍 ?먮룞 怨꾩궛</a></li>
+        <li><a href="#sec-mrtdb"><i class="fa-solid fa-database"></i> 4. MRT_DB ?ㅽ궎留?紐낆꽭</a></li>
+        <li><a href="#sec-agridb"><i class="fa-solid fa-seedling"></i> 5. ?좉퇋 ?곷냽??DB ?ㅺ퀎</a></li>
+        <li><a href="#sec-mapping"><i class="fa-solid fa-table-columns"></i> 6. DB ???붾㈃ UI 留ㅽ븨</a></li>
+        <li><a href="#sec-api"><i class="fa-solid fa-code"></i> 7. REST API 7? ?붾뱶?ъ씤??/a></li>
+        <li><a href="#sec-frontend"><i class="fa-solid fa-laptop-code"></i> 8. ?꾨줎?몄뿏???곕룞 ?ъ씤??/a></li>
+        <li><a href="#sec-sample"><i class="fa-brands fa-python"></i> 9. 諛깆뿏??援ы쁽 ?덉젣</a></li>
+      </ul>
+    </aside>
+
+    <!-- Content Area -->
+    <main>
+
+      <!-- Section 1. Overview -->
+      <section id="sec-overview" class="content-section">
+        <div class="section-header">
+          <i class="fa-solid fa-network-wired"></i>
+          <h2>1. ?쒖뒪???꾪궎?띿쿂 媛쒖슂</h2>
+        </div>
+        <p>蹂??뚮옯?쇱? <strong>?쒖뼇愿?諛쒖쟾 O&M 愿??MRT_DB)</strong>? <strong>吏?먯껜 ?곷냽 ?댄뻾 ?됱젙 愿??AGRI_ADMIN_DB)</strong>媛 寃고빀??李⑥꽭? ?섏씠釉뚮━??愿???쒖뒪?쒖엯?덈떎.</p>
+
+        <div class="callout">
+          ?뮕 <strong>?곗씠???곕룞 ??먯튃</strong>: 諛깆뿏?쒕뒗 蹂듭옟???뺤궛 怨꾩궛 ?놁씠 ?쒖닔 <strong>諛쒖쟾??kWh/MWh) 諛?怨꾩륫移?/strong>留??꾩넚?섎ŉ, ?꾨줎?몄뿏???붿쭊(<code>computePlantFinancials</code>)??援?? ?쒖? ?섏떇???곕씪 <strong>SMP/REC ?뺤궛湲? 珥앸ℓ異? CO??媛먯텞?? ?뚮굹臾?洹몃（ ?섎? 100% ?먮룞 ?곗궛</strong>?섏뿬 ???붾㈃???ㅼ떆媛?諛섏쁺?⑸땲??
+        </div>
+
+        <div class="mermaid">
+        flowchart TD
+          subgraph ?꾩옣?섎뱶?⑥뼱 [?꾩옣 ?섎뱶?⑥뼱 諛??쇱꽌]
+            A1[?꾩옣 ?몃쾭??/ RTU]
+            A2[?섍꼍 湲곗긽 ?쇱꽌]
+            A3[吏?ν삎 AI CCTV 移대찓??
+          end
+
+          subgraph ?곗씠?곕쿋?댁뒪 [?곗씠?곕쿋?댁뒪 ?쒕쾭]
+            B1[(MRT_DB : 諛쒖쟾/?쇱꽌)]
+            B2[(AGRI_ADMIN_DB : ?곷냽?됱젙)]
+          end
+
+          A1 -->|Modbus-TCP / RS-485| B1
+          A2 -->|Modbus RTU| B1
+          A3 -->|RTSP / AI 媛앹껜?몄떇| B2
+
+          B1 --> C[諛깆뿏??REST API ?쒕쾭]
+          B2 --> C
+
+          C -->|JSON over HTTPS| D[?숈뼇?고빀 ?듯빀 愿?????뚮옯??
+          D --> E1[??쒕낫???ㅼ떆媛?愿??
+          D --> E2[?ㅻ퉬?꾪솴 3??AC/DC]
+          D --> E3[吏?먯껜 ?곷냽?됱젙 媛먯궗]
+          D --> E4[移댁뭅?ㅻ콉???ㅽ???湲덉쑖?뺤궛]
+        </div>
+      </section>
+
+      <!-- Section 2. RBAC -->
+      <section id="sec-rbac" class="content-section">
+        <div class="section-header">
+          <i class="fa-solid fa-user-shield"></i>
+          <h2>2. ?ъ슜???몄쬆 諛?沅뚰븳(RBAC) 泥닿퀎</h2>
+        </div>
+        
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[?ъ슜??沅뚰븳 ???ㅻ챸]</strong> 濡쒓렇?명븳 ?ъ슜??諛쒖쟾?ъ뾽?? 吏?먯껜 怨듬Т?? 愿由ъ옄)蹂꾨줈 議고쉶?????덈뒗 諛쒖쟾??踰붿쐞? ?묎렐 媛?ν븳 ?붾㈃ 硫붾돱瑜??뺤쓽???쒖엯?덈떎.
+        </div>
+
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th>??븷 (Role)</th>
+              <th>????ъ슜??/th>
+              <th>議고쉶 媛??諛쒖쟾??/th>
+              <th>?묎렐 媛??硫붾돱</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong><code>owner12139</code></strong></td>
+              <td>?⑤늻由?,4 諛쒖쟾?ъ뾽??/td>
+              <td>[12139] ?⑤늻由?,4 (?⑥씪)</td>
+              <td>??쒕낫?? ?ㅻ퉬?꾪솴, ?щ젰蹂닿린, ?뺢린蹂닿퀬?? ?곷냽?뺣낫</td>
+            </tr>
+            <tr>
+              <td><strong><code>owner12138</code></strong></td>
+              <td>?⑤늻由?,2 諛쒖쟾?ъ뾽??/td>
+              <td>[12138] ?⑤늻由?,2 (?⑥씪)</td>
+              <td>??쒕낫?? ?ㅻ퉬?꾪솴, ?щ젰蹂닿린, ?뺢린蹂닿퀬?? ?곷냽?뺣낫</td>
+            </tr>
+            <tr>
+              <td><strong><code>official</code></strong></td>
+              <td>吏?먯껜 ?띿젙 怨듬Т??/td>
+              <td>5媛??ъ뾽???꾩껜</td>
+              <td>?곷냽 醫낇빀愿?? ?ъ뾽?μ긽?? ?댁긽吏뺥썑, CCTV利앸튃, ?댄뻾由ы룷?? ?꾩옣?먭?</td>
+            </tr>
+            <tr>
+              <td><strong><code>admin</code></strong></td>
+              <td>?숈뼇?고빀 理쒓퀬 愿由ъ옄</td>
+              <td>5媛??ъ뾽???꾩껜</td>
+              <td><span class="badge badge-success">?꾩껜 14媛?硫붾돱 ??≪꽭??/span> (諛쒖쟾 ?깅뒫 + ?곷냽 ?됱젙 ?愿??</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout">
+          ?뵏 <strong>?몄쬆 ?ㅻ뜑 洹쒓꺽</strong>: 紐⑤뱺 API ?붿껌 ??<code>Authorization: Bearer &lt;JWT_ACCESS_TOKEN&gt;</code> ?ㅻ뜑瑜??꾩넚?댁빞 ?⑸땲??
+        </div>
+      </section>
+
+      <!-- Section 3. Financial Calculation Engine -->
+      <section id="sec-financial" class="content-section">
+        <div class="section-header">
+          <i class="fa-solid fa-calculator"></i>
+          <h2>3. ?ㅼ떆媛??먮룞 湲덉쑖 ?뺤궛 & ?섍꼍(CO?? ?곗궛 ?붿쭊</h2>
+        </div>
+        
+        <p>諛쒖쟾??kWh)留?二쇱엯?섎㈃ 利됱떆 紐⑤뱺 湲덉븸怨??꾩냼 媛먯텞?됱씠 ?곗텧?섎뒗 ?ㅼ떆媛??쒕??덉씠?곗엯?덈떎:</p>
+
+        <!-- Live Calculator Box -->
+        <div class="calc-card">
+          <h3 style="font-size:16px; font-weight:800; color:#38bdf8; margin-bottom:12px;"><i class="fa-solid fa-bolt"></i> ?ㅼ떆媛?諛쒖쟾?????뺤궛湲??곕룞 ?쒕??덉씠??/h3>
+          
+          <div class="calc-grid">
+            <div class="calc-input-box">
+              <label>湲덉씪 諛쒖쟾??(kWh)</label>
+              <input type="number" id="demoKwh" value="348" oninput="runDemoCalc()">
+            </div>
+            <div class="calc-result-box">
+              <div style="font-size:11.5px; color:#94a3b8; font-weight:700;">?뱀씪 SMP ?뺤궛湲?(131.0??</div>
+              <div class="res-val" id="demoSmp">45,588 ??/div>
+            </div>
+            <div class="calc-result-box">
+              <div style="font-size:11.5px; color:#94a3b8; font-weight:700;">?뱀씪 REC ?뺤궛湲?(媛以묒튂 1.2)</div>
+              <div class="res-val" id="demoRec">29,984 ??/div>
+            </div>
+            <div class="calc-result-box" style="border-color:#10b981; background:rgba(16,185,129,0.1);">
+              <div style="font-size:11.5px; color:#6ee7b7; font-weight:700;">湲덉씪 珥?留ㅼ텧 (SMP+REC)</div>
+              <div class="res-val" style="color:#10b981;" id="demoTotal">7.6 留뚯썝</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[湲덉쑖쨌?섍꼍 ?곗궛 怨듭떇 ???ㅻ챸]</strong> ?꾨젰嫄곕옒??KPX) 諛??쒓뎅?먮꼫吏怨듬떒 ?쒖? ?④?瑜??곸슜?섏뿬 諛쒖쟾??kWh)?쇰줈遺???섏씡湲덇낵 ?⑥떎媛??媛먯텞?됱쓣 ?먮룞 怨꾩궛?섎뒗 怨듭떇 ?쒖엯?덈떎.
+        </div>
+
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th>援щ텇</th>
+              <th>?곸슜 ?④? / 諛곗텧怨꾩닔</th>
+              <th>?곗궛 怨듭떇 (Formula)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>?뱀씪 SMP ?뺤궛湲?/strong></td>
+              <td>131.0 ??/ kWh</td>
+              <td>$$\text{?뱀씪 SMP ?섏씡(??} = \text{?뱀씪 諛쒖쟾??kWh)} \times 131.0\text{??$$</td>
+            </tr>
+            <tr>
+              <td><strong>?뱀씪 REC ?뺤궛湲?/strong></td>
+              <td>71,800 ??/ REC (媛以묒튂 1.2)</td>
+              <td>$$\text{?뱀씪 REC ?섏씡(??} = \left(\frac{\text{?뱀씪 諛쒖쟾??kWh)}}{1,000}\right) \times 1.2 \times 71,800\text{??$$</td>
+            </tr>
+            <tr>
+              <td><strong>?뱀씪 珥?留ㅼ텧</strong></td>
+              <td>SMP + REC ?⑹궛</td>
+              <td>$$\text{湲덉씪 ?섏씡(留뚯썝)} = \frac{\text{SMP ?섏씡(??} + \text{REC ?섏씡(??}}{10,000}$$</td>
+            </tr>
+            <tr>
+              <td><strong>?붽컙 SMP / REC</strong></td>
+              <td>?붽컙 諛쒖쟾??湲곗?</td>
+              <td>$$\text{?붽컙 珥?留ㅼ텧(留뚯썝)} = \frac{\text{?붽컙 諛쒖쟾??kWh)} \times (131.0 + 1.2 \times 71.8)}{10,000}$$</td>
+            </tr>
+            <tr>
+              <td><strong>?꾩쟻 REC ?섎웾 諛??뺤궛湲?/strong></td>
+              <td>?꾩쟻 諛쒖쟾??MWh)</td>
+              <td>$$\text{?꾩쟻 REC(REC)} = \text{?꾩쟻 諛쒖쟾??MWh)} \times 1.2$$</td>
+            </tr>
+            <tr>
+              <td><strong>?⑥떎媛??CO?? 媛먯텞??/strong></td>
+              <td>0.4781 kgCO??/ kWh</td>
+              <td>$$\text{CO}_2 \text{ 媛먯텞??Ton)} = \frac{\text{諛쒖쟾??kWh)} \times 0.4781}{1,000}$$</td>
+            </tr>
+            <tr>
+              <td><strong>?뚮굹臾??앹옱 ?④낵</strong></td>
+              <td>0.072 洹몃（ / kWh</td>
+              <td>$$\text{?뚮굹臾??섏궛(洹몃（)} = \text{諛쒖쟾??kWh)} \times 0.072$$</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 4. MRT_DB Tables -->
+      <section id="sec-mrtdb" class="content-section">
+        <div class="section-header">
+          <i class="fa-solid fa-database"></i>
+          <h2>4. 湲곗〈 諛쒖쟾??MRT_DB ?뚯씠釉??ㅽ궎留?(11媛??뚯씠釉?</h2>
+        </div>
+        
+        <p><code>MRT_DB ?꾪솴 .xlsx</code>???뺤쓽???몃쾭??諛?湲곗긽?쇱꽌 ?붾젅硫뷀듃由??ㅽ궎留?紐낆꽭?낅땲??</p>
+
+        <div class="sub-title">4.1. <code>Plant_info</code> (諛쒖쟾??湲곕낯?뺣낫 諛??듭떊 ?ㅼ젙)</div>
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[Plant_info ?뚯씠釉??ㅻ챸]</strong> 諛쒖쟾?뚯쓽 ?대쫫, ?ㅼ튂 二쇱냼, ????곕씫泥?諛??μ븷 諛쒖깮 ??SMS 臾몄옄瑜?諛쒖넚?섍린 ?꾪븳 ?듭떊 ?ㅼ젙 ?뺣낫媛 ??λ릺???뚯씠釉붿엯?덈떎.
+        </div>
+        <table class="doc-table">
+          <thead>
+            <tr><th>移쇰읆紐?/th><th>?곗씠???덉떆</th><th>?ㅻ챸</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>name</code></td><td>?쒖뼇愿?紐⑤땲?곕쭅</td><td>諛쒖쟾???쒖뒪??紐낆묶</td></tr>
+            <tr><td><code>address</code></td><td>愿묒＜ 愿묒뿭??遺곴뎄 泥⑤떒 ?곗떊濡?12</td><td>諛쒖쟾???ㅼ튂 二쇱냼</td></tr>
+            <tr><td><code>callunmber</code></td><td>062-674-9916</td><td>????곕씫泥?/td></tr>
+            <tr><td><code>iv_protocolList</code></td><td>REMS-1, HY12N24</td><td>吏???몃쾭???꾨줈?좎퐳 紐⑸줉</td></tr>
+            <tr><td><code>commProtList</code></td><td>RS485-CH1, RS485-CH3</td><td>?쒕━???듭떊 ?ы듃 紐⑸줉</td></tr>
+            <tr><td><code>JKVbV1_Setting</code></td><td>"SMS_Api_Key": "QXKLIX61JQ412"</td><td>SMS ?뚮┝ API ?몄쬆 ??/td></tr>
+            <tr><td><code>SMS_Number_Setting</code></td><td>"SMS_Number_Setting1": "010-6356-0074"</td><td>湲닿툒 ?μ븷 ?뚮┝ ?섏떊???꾪솕踰덊샇</td></tr>
+          </tbody>
+        </table>
+
+        <div class="sub-title">4.2. <code>Iv_list</code> (?몃쾭??紐⑸줉 諛??듭떊 ?뚮씪誘명꽣)</div>
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[Iv_list ?뚯씠釉??ㅻ챸]</strong> 諛쒖쟾?뚯뿉 ?ㅼ튂???몃쾭???λ퉬 紐⑸줉怨?媛??몃쾭?곗쓽 ?듭떊 ?ы듃, ?듭떊 二쇱냼(援?쾲), ?뺢꺽 ?⑸웾(kW)??愿由ы븯???뚯씠釉붿엯?덈떎.
+        </div>
+        <table class="doc-table">
+          <thead>
+            <tr><th>移쇰읆紐?/th><th>?곗씠???덉떆</th><th>?ㅻ챸</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>seq</code></td><td>869</td><td>?몃쾭??怨좎쑀 ?앸퀎??(PK)</td></tr>
+            <tr><td><code>Iv_commPort</code></td><td>RS485-CH1</td><td>?좊떦???듭떊 ?ы듃</td></tr>
+            <tr><td><code>iv_address</code></td><td>3</td><td>Modbus 援?쾲 (?듭떊 二쇱냼)</td></tr>
+            <tr><td><code>iv_name</code></td><td>?몃쾭??</td><td>?몃쾭??紐낆묶</td></tr>
+            <tr><td><code>iv_capa</code></td><td>50</td><td>?몃쾭???뺢꺽 ?⑸웾 (kW)</td></tr>
+            <tr><td><code>iv_number_of_mppt</code></td><td>15</td><td>MPPT ?몃옒而???/td></tr>
+            <tr><td><code>iv_pv_ch_name</code></td><td>CH1,CH2,CH3,CH4,CH5</td><td>MPPT/?ㅽ듃留?梨꾨꼸 ?대쫫</td></tr>
+          </tbody>
+        </table>
+
+        <div class="sub-title">4.3. <code>Iv_real_data</code> (?몃쾭???ㅼ떆媛?怨꾩륫 ?곗씠??</div>
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[Iv_real_data ?뚯씠釉??ㅻ챸]</strong> ?몃쾭?곌? 諛쒖쟾 以묒씤 DC ?낅젰 ?꾩븬/?꾨쪟, 3???좉컙?꾩븬(RS/ST/TR), 3???꾨쪟(R/S/T), 異쒕젰 ?꾨젰, ?꾩쟻 諛쒖쟾?됱쓣 珥??⑥쐞濡??ㅼ떆媛???ν븯???듭떖 ?곗씠???쒖엯?덈떎.
+        </div>
+        <table class="doc-table">
+          <thead>
+            <tr><th>移쇰읆紐?/th><th>?곗씠???덉떆</th><th>?섏궛媛?/th><th>?ㅻ챸</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>seq</code></td><td>869</td><td>-</td><td>?몃쾭???앸퀎??/td></tr>
+            <tr><td><code>PvTotalVolt</code></td><td>4820</td><td>482.0 V</td><td>DC 珥??낅젰 ?꾩븬</td></tr>
+            <tr><td><code>PvTotalCurrent</code></td><td>750</td><td>75.0 A</td><td>DC 珥??낅젰 ?꾨쪟</td></tr>
+            <tr><td><code>PvPower</code></td><td>36541</td><td>36.54 kW</td><td>DC 珥??낅젰 ?꾨젰</td></tr>
+            <tr><td><code>Grid_RS_Volt</code></td><td>4060</td><td>406.0 V</td><td>3???좉컙?꾩븬 RS</td></tr>
+            <tr><td><code>Grid_ST_Volt</code></td><td>4070</td><td>407.0 V</td><td>3???좉컙?꾩븬 ST</td></tr>
+            <tr><td><code>Grid_TR_Volt</code></td><td>4060</td><td>406.0 V</td><td>3???좉컙?꾩븬 TR</td></tr>
+            <tr><td><code>Grid_R_Current</code></td><td>500</td><td>50.0 A</td><td>3??怨꾪넻 R???꾨쪟</td></tr>
+            <tr><td><code>Grid_Power</code></td><td>35618</td><td>35.62 kW</td><td>AC ?좏슚 異쒕젰 ?꾨젰</td></tr>
+            <tr><td><code>Grid_Factor</code></td><td>999</td><td>99.9 %</td><td>??쪧 (Power Factor)</td></tr>
+            <tr><td><code>Grid_Frq</code></td><td>599</td><td>59.9 Hz</td><td>怨꾪넻 二쇳뙆??/td></tr>
+            <tr><td><code>Add_power</code></td><td>409752258</td><td>409.75 MWh</td><td>?몃쾭???꾩쟻 諛쒖쟾??(Wh ?⑥쐞)</td></tr>
+            <tr><td><code>Mppt_Volt</code> / <code>Mppt_Current</code></td><td>諛곗뿴媛?/td><td>-</td><td>4梨꾨꼸 MPPT ?꾩븬/?꾨쪟</td></tr>
+          </tbody>
+        </table>
+
+        <div class="sub-title">4.4. <code>EvSensor_real_data</code> (?섍꼍/湲곗긽 ?쇱꽌 怨꾩륫 ?곗씠??</div>
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[EvSensor_real_data ?뚯씠釉??ㅻ챸]</strong> ?꾩옣 湲곗긽 ?섍꼍?쇱꽌媛 痢≪젙???쇱궗?? ?⑤룄, ?듬룄, ?랁뼢/?띿냽, 媛뺤슦?? ?먯쇅??UV), 議곕룄(Lux)媛 湲곕줉?섎뒗 ?쒖엯?덈떎.
+        </div>
+        <table class="doc-table">
+          <thead>
+            <tr><th>移쇰읆紐?/th><th>?ㅻ챸</th><th>?뚮옯??留ㅽ븨 ?곸뿭</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>sun</code></td><td>寃쎌궗硫?/ ?섑룊硫??쇱궗??($W/m^2$)</td><td>湲곗긽 ?꾩젽, 諛쒖쟾 ?⑥쑉 遺꾩꽍</td></tr>
+            <tr><td><code>temperature</code></td><td>?멸린 ?⑤룄 諛?紐⑤뱢 ?⑤룄 ($^\circ C$)</td><td>?곷떒 ?ㅻ뜑 ?좎뵪 ?좊컮</td></tr>
+            <tr><td><code>humidity</code></td><td>?湲??듬룄 ($\%$)</td><td>?곷떒 ?ㅻ뜑 ?좎뵪 ?좊컮</td></tr>
+            <tr><td><code>wind_direction</code> / <code>wind_speed</code></td><td>?랁뼢 諛??띿냽 ($m/s$)</td><td>?곷떒 ?ㅻ뜑 ?좎뵪 ?좊컮</td></tr>
+            <tr><td><code>rainfall_mm</code></td><td>媛뺤슦??($mm$)</td><td>?곗쿇 ?щ? 媛먯?</td></tr>
+            <tr><td><code>uv_index</code> / <code>light_lux</code></td><td>?먯쇅??吏??(UV) 諛?議곕룄 ($Lux$)</td><td>?곷냽 ?묐Ъ ?앹쑁 吏??/td></tr>
+            <tr><td><code>low_battery</code></td><td>?쇱꽌 諛고꽣由???꾩븬 寃쎄퀬</td><td>?좎?蹂댁닔 ?뚮엺</td></tr>
+          </tbody>
+        </table>
+
+        <div class="sub-title">4.5. <code>Total_ErrorHistory</code> (?μ븷 諛??뚮엺 ?대젰)</div>
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[Total_ErrorHistory ?뚯씠釉??ㅻ챸]</strong> ?몃쾭?곕굹 ?쇱꽌 ?듭떊 ?먯젅, 湲곌린 ?댁긽 諛쒖깮 ???μ븷 硫붿떆吏, ?꾪뿕 ?깃툒(二쇱쓽/寃쎄퀬/?꾪뿕), 諛쒖깮 ?쒓컖??湲곕줉?섎뒗 ?뚯씠釉붿엯?덈떎.
+        </div>
+        <table class="doc-table">
+          <thead>
+            <tr><th>移쇰읆紐?/th><th>?곗씠???덉떆</th><th>?ㅻ챸</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>1</td><td>?ㅻ쪟 ?대젰 怨좎쑀踰덊샇 (PK)</td></tr>
+            <tr><td><code>seq</code></td><td>865</td><td>諛쒖깮 ?λ퉬 ?앸퀎踰덊샇 (?몃쾭??seq)</td></tr>
+            <tr><td><code>Message</code></td><td>?몃쾭??: ?듭떊 ?먯젅??諛쒖깮?섏??듬땲??</td><td>?곸꽭 怨좎옣 吏꾨떒 ?댁슜</td></tr>
+            <tr><td><code>Level</code></td><td>二쇱쓽 / 寃쎄퀬 / ?꾪뿕</td><td>?ш컖???깃툒</td></tr>
+            <tr><td><code>time</code></td><td>2026-08-24 11:42</td><td>諛쒖깮 ??꾩뒪?ы봽</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 5. New AGRI_ADMIN_DB -->
+      <section id="sec-agridb" class="content-section">
+        <div class="section-header">
+          <i class="fa-solid fa-seedling"></i>
+          <h2>5. ?곷냽???됱젙 愿?쒕? ?꾪빐 ?좉퇋 援ъ텞?댁빞 ?섎뒗 DB ?ㅺ퀎 (5媛??뚯씠釉?</h2>
+        </div>
+        
+        <p><code>MRT_DB</code>?먮뒗 ?녿뒗 <strong>1) ?띿?踰??명뿀媛, 2) AI CCTV ?곸긽 ?먯?, 4) ?됱젙 ?쒖젙紐낅졊 諛??꾩옣?먭?</strong>???꾪빐 ?좉퇋 援ъ텞?댁빞 ?섎뒗 5醫??뚯씠釉붿엯?덈떎:</p>
+
+        <div class="mermaid">
+        erDiagram
+          Plant_info ||--o{ agri_plant_permits : "1:1 ?명뿀媛 留ㅽ븨"
+          Plant_info ||--o{ agri_cctv_streams : "1:N 移대찓???ㅼ튂"
+          agri_cctv_streams ||--o{ agri_activity_logs : "1:N ?곷냽?쒕룞 ?먯?"
+          Plant_info ||--o{ agri_compliance_actions : "1:N ?쒖젙紐낅졊/?ъ쭊?붿껌"
+          Plant_info ||--o{ agri_inspections : "1:N ?꾩옣?먭? 諛곗젙"
+        </div>
+
+        <div class="sub-title">5.1. <code>agri_plant_permits</code> (1. ?띿?踰??명뿀媛 諛??묐Ъ 寃쎌옉 ?뺣낫)</div>
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[agri_plant_permits ?뚯씠釉??ㅻ챸]</strong> 吏?먯껜 ?쇱떆?ъ슜?덇? 踰덊샇, ?좉퀬 ?묐Ъ怨?AI ?먮룆 ?묐Ъ ?쇱튂 ?щ?, ?덇? 硫댁쟻 ?鍮??ㅺ꼍??硫댁쟻 鍮꾩쑉(?댄뻾瑜?, ??⑸룄 ?꾩슜 ?щ?瑜?愿由ы븯???띿? ?됱젙 ?듭떖 ?뚯씠釉붿엯?덈떎.
+        </div>
+        <table class="doc-table">
+          <thead>
+            <tr><th>移쇰읆紐?/th><th>???/th><th>??/th><th>?덉떆媛?/th><th>?ㅻ챸</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>INT</td><td><span class="pk-badge">PK</span></td><td>1</td><td>?명뿀媛 怨좎쑀 ?앸퀎??/td></tr>
+            <tr><td><code>plant_id</code></td><td>VARCHAR(20)</td><td><span class="fk-badge">FK</span></td><td>12139</td><td>諛쒖쟾??ID (<code>Plant_info.id</code>)</td></tr>
+            <tr><td><code>permit_no</code></td><td>VARCHAR(50)</td><td>-</td><td>2027-AGPV-12139</td><td>吏?먯껜 ?쇱떆?ъ슜?덇? 踰덊샇</td></tr>
+            <tr><td><code>permit_crop</code></td><td>VARCHAR(50)</td><td>-</td><td>肄?/td><td>吏?먯껜 ?좉퀬 ?덇? ?묐Ъ紐?/td></tr>
+            <tr><td><code>ai_crop</code></td><td>VARCHAR(50)</td><td>-</td><td>肄?/td><td>AI ?곸긽 遺꾩꽍 ?먮룆 ?묐Ъ紐?/td></tr>
+            <tr><td><code>crop_match</code></td><td>BOOLEAN</td><td>-</td><td>TRUE</td><td>?좉퀬 ?묐Ъ怨?AI ?묐Ъ ?쇱튂 ?щ?</td></tr>
+            <tr><td><code>permit_area_m2</code></td><td>INT</td><td>-</td><td>4000</td><td>?쇱떆?ъ슜?덇? 硫댁쟻 (??</td></tr>
+            <tr><td><code>actual_area_m2</code></td><td>INT</td><td>-</td><td>3400</td><td>?ㅼ젣 ?곷냽 寃쎌옉 硫댁쟻 (??</td></tr>
+            <tr><td><code>compliance_ratio</code></td><td>DECIMAL(5,2)</td><td>-</td><td>85.00</td><td>?ㅺ꼍??硫댁쟻 ?댄뻾瑜?(%)</td></tr>
+            <tr><td><code>other_use_status</code></td><td>VARCHAR(30)</td><td>-</td><td>?놁쓬 (誘명깘吏)</td><td>??⑸룄(二쇱감/?곸튂) ?꾩슜 ?섏떖 ?щ?</td></tr>
+            <tr><td><code>authority_org</code></td><td>VARCHAR(100)</td><td>-</td><td>媛뺤썝?밸퀎?먯튂??/ ?먯＜??/td><td>愿???됱젙 吏?먯껜紐?/td></tr>
+            <tr><td><code>permit_start_date</code></td><td>DATE</td><td>-</td><td>2024-03-01</td><td>?쇱떆?ъ슜?덇? ?쒖옉??/td></tr>
+            <tr><td><code>permit_end_date</code></td><td>DATE</td><td>-</td><td>2032-02-28</td><td>?쇱떆?ъ슜?덇? 留뚮즺??(8??</td></tr>
+            <tr><td><code>compliance_score</code></td><td>INT</td><td>-</td><td>85</td><td>醫낇빀 ?곷냽?댄뻾 ?됯??먯닔 (100??留뚯젏)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="sub-title">5.2. <code>agri_cctv_streams</code> (2. 吏?ν삎 AI CCTV 移대찓??硫뷀??곗씠??</div>
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[agri_cctv_streams ?뚯씠釉??ㅻ챸]</strong> ?띿? ?꾩옣???ㅼ튂??4???AI CCTV 移대찓???ㅽ듃由?URL(RTSP), ?ㅼ떆媛??곌껐 ?곹깭, ?꾩옱 ?붾㈃?먯꽌 ?먯? 以묒씤 ?묒뾽 ?쒓렇瑜?愿由ы븯???뚯씠釉붿엯?덈떎.
+        </div>
+        <table class="doc-table">
+          <thead>
+            <tr><th>移쇰읆紐?/th><th>???/th><th>??/th><th>?덉떆媛?/th><th>?ㅻ챸</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>INT</td><td><span class="pk-badge">PK</span></td><td>1</td><td>移대찓???앸퀎??/td></tr>
+            <tr><td><code>plant_id</code></td><td>VARCHAR(20)</td><td><span class="fk-badge">FK</span></td><td>12139</td><td>?뚯냽 諛쒖쟾??ID</td></tr>
+            <tr><td><code>cam_code</code></td><td>VARCHAR(20)</td><td>-</td><td>CAM01</td><td>移대찓???앸퀎 肄붾뱶</td></tr>
+            <tr><td><code>cam_name</code></td><td>VARCHAR(100)</td><td>-</td><td>CAM 01 (?쒖륫 吏꾩엯濡?& 1援ъ뿭)</td><td>移대찓???ㅼ튂 ?꾩튂 紐낆묶</td></tr>
+            <tr><td><code>stream_url</code></td><td>VARCHAR(255)</td><td>-</td><td>rtsp://stream.dongyang.com/12139/cam1</td><td>?ㅼ떆媛??곸긽 ?ㅽ듃由?RTSP/HLS URL</td></tr>
+            <tr><td><code>status</code></td><td>VARCHAR(30)</td><td>-</td><td>LIVE 1080P</td><td>移대찓???곌껐 諛??댁긽???곹깭</td></tr>
+            <tr><td><code>ai_tag</code></td><td>VARCHAR(100)</td><td>-</td><td>?쨼 AI 寃쎌슫 ?묒뾽 媛먯?</td><td>?ㅼ떆媛?媛앹껜?몄떇 二쇱슂 媛먯? ?쒓렇</td></tr>
+            <tr><td><code>observed_crop</code></td><td>VARCHAR(50)</td><td>-</td><td>?묐Ъ: 肄?/td><td>?대떦 移대찓??愿痢??묐Ъ</td></tr>
+          </tbody>
+        </table>
+
+        <div class="sub-title">5.3. <code>agri_activity_logs</code> (2. ?붽컙 ?곷냽?쒕룞 AI ?먯? ?대젰)</div>
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[agri_activity_logs ?뚯씠釉??ㅻ챸]</strong> CCTV AI媛 ?몃옓??寃쎌슫, ?뚯쥌, 諛⑹젣, ?섑솗 媛숈? ?띿궗 ?쒕룞??媛먯??덉쓣 ???ㅻ깄??利앸튃 ?ъ쭊 寃쎈줈? AI ?좊ː??98%), 吏?먯껜 怨듬Т??寃??寃곌낵瑜???ν븯???대젰 ?뚯씠釉붿엯?덈떎.
+        </div>
+        <table class="doc-table">
+          <thead>
+            <tr><th>移쇰읆紐?/th><th>???/th><th>??/th><th>?덉떆媛?/th><th>?ㅻ챸</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>INT</td><td><span class="pk-badge">PK</span></td><td>101</td><td>?곷냽?쒕룞 ?대깽??怨좎쑀 ID</td></tr>
+            <tr><td><code>plant_id</code></td><td>VARCHAR(20)</td><td><span class="fk-badge">FK</span></td><td>12139</td><td>諛쒖쟾??ID</td></tr>
+            <tr><td><code>cam_code</code></td><td>VARCHAR(20)</td><td>-</td><td>CAM01</td><td>?먯? 移대찓??肄붾뱶</td></tr>
+            <tr><td><code>activity_type</code></td><td>VARCHAR(50)</td><td>-</td><td>寃쎌슫</td><td>?쒕룞 遺꾨쪟 (寃쎌슫/?뚯쥌/諛⑹젣/?섑솗/愿???쒖큹)</td></tr>
+            <tr><td><code>title</code></td><td>VARCHAR(150)</td><td>-</td><td>?슌 ?몃옓??寃쎌슫 諛??뺤? ?묒뾽</td><td>?붾㈃ ?쒖텧???대깽???쒕ぉ</td></tr>
+            <tr><td><code>confidence</code></td><td>VARCHAR(10)</td><td>-</td><td>98%</td><td>AI ?몄떇 ?좊ː??/td></tr>
+            <tr><td><code>snapshot_url</code></td><td>VARCHAR(255)</td><td>-</td><td>/uploads/evidence_12139_0415.jpg</td><td>罹≪쿂 利앸튃 ?ъ쭊 寃쎈줈</td></tr>
+            <tr><td><code>detected_at</code></td><td>DATETIME</td><td>-</td><td>2027-04-15 14:22:00</td><td>AI ?먯? ?쇱떆</td></tr>
+            <tr><td><code>review_result</code></td><td>VARCHAR(20)</td><td>-</td><td>?몄젙</td><td>吏?먯껜 怨듬Т??寃???먯젙 (?몄젙/蹂대쪟/諛섎젮)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="sub-title">5.4. <code>agri_compliance_actions</code> (4. ?쒖젙紐낅졊 諛?蹂댁땐?ъ쭊 ?붿껌 愿由?</div>
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[agri_compliance_actions ?뚯씠釉??ㅻ챸]</strong> 誘멸꼍???섏떖 援ъ뿭??諛쒓껄?섏뿀????吏?먯껜 怨듬Т?먯씠 ?ъ뾽?먯뿉寃?蹂댁땐 ?ъ쭊???붿껌?섍굅???쒖젙 沅뚭퀬瑜??대┛ ?댁뿭怨??ъ뾽?먭? ?뚯떊???ъ쭊??愿由ы븯???됱젙 議곗튂 ?뚯씠釉붿엯?덈떎.
+        </div>
+        <table class="doc-table">
+          <thead>
+            <tr><th>移쇰읆紐?/th><th>???/th><th>??/th><th>?덉떆媛?/th><th>?ㅻ챸</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>INT</td><td><span class="pk-badge">PK</span></td><td>201</td><td>?됱젙 議곗튂 怨좎쑀 ID</td></tr>
+            <tr><td><code>plant_id</code></td><td>VARCHAR(20)</td><td><span class="fk-badge">FK</span></td><td>12139</td><td>???諛쒖쟾??ID</td></tr>
+            <tr><td><code>action_type</code></td><td>VARCHAR(30)</td><td>-</td><td>photo_request</td><td>議곗튂 ?좏삎 (photo_request: ?ъ쭊?붿껌, warning: ?쒖젙沅뚭퀬)</td></tr>
+            <tr><td><code>target_zone</code></td><td>VARCHAR(100)</td><td>-</td><td>遺곸륫 寃쎄퀎遺 2.1% 援ъ뿭</td><td>?먭? ????띿? 援ъ뿭</td></tr>
+            <tr><td><code>request_reason</code></td><td>TEXT</td><td>-</td><td>?먭꺽 CCTV ?먮룆 寃곌낵 誘멸꼍??硫댁쟻 利앷?</td><td>?붿껌 ?ъ쑀</td></tr>
+            <tr><td><code>due_date</code></td><td>DATE</td><td>-</td><td>2027-04-30</td><td>?ъ뾽???ъ쭊 ?쒖텧 湲고븳</td></tr>
+            <tr><td><code>status</code></td><td>VARCHAR(30)</td><td>-</td><td>?붿껌 諛쒖넚</td><td>吏꾪뻾 ?곹깭 (?붿껌 諛쒖넚/?쒖텧 ?꾨즺/?뱀씤 ?꾨즺)</td></tr>
+            <tr><td><code>submitted_img</code></td><td>VARCHAR(255)</td><td>-</td><td>/uploads/owner_reply_12139.jpg</td><td>?ъ뾽?먭? ?낅줈?쒗븳 利앸튃 ?ъ쭊</td></tr>
+          </tbody>
+        </table>
+
+        <div class="sub-title">5.5. <code>agri_inspections</code> (4. 吏?먯껜 ?꾩옣?먭? 諛곗젙 諛?寃곌낵)</div>
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[agri_inspections ?뚯씠釉??ㅻ챸]</strong> 吏?먯껜 ?대떦 二쇰Т愿???ㅽ봽?쇱씤 ?꾩옣 ?ㅼ궗 ?쇱젙 諛곗젙, ?꾩옣 ?뺤씤 寃곌낵 蹂닿퀬?? 理쒖쥌 ?곷냽?섎Т ?곹빀 ?먯젙 ?댁뿭??愿由ы븯???뚯씠釉붿엯?덈떎.
+        </div>
+        <table class="doc-table">
+          <thead>
+            <tr><th>移쇰읆紐?/th><th>???/th><th>??/th><th>?덉떆媛?/th><th>?ㅻ챸</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>INT</td><td><span class="pk-badge">PK</span></td><td>301</td><td>?꾩옣?먭? 怨좎쑀 ID</td></tr>
+            <tr><td><code>plant_id</code></td><td>VARCHAR(20)</td><td><span class="fk-badge">FK</span></td><td>12139</td><td>???諛쒖쟾??ID</td></tr>
+            <tr><td><code>inspector</code></td><td>VARCHAR(50)</td><td>-</td><td>源?곹샇 二쇰Т愿</td><td>諛곗젙???꾩옣 ?ㅼ궗 媛먮룆愿</td></tr>
+            <tr><td><code>scheduled_date</code></td><td>DATE</td><td>-</td><td>2027-05-02</td><td>?꾩옣 諛⑸Ц ?덉젙??/td></tr>
+            <tr><td><code>status</code></td><td>VARCHAR(30)</td><td>-</td><td>諛곗젙 ?꾨즺</td><td>?먭? ?곹깭 (諛곗젙 ?꾨즺/?먭? 以??먭? ?꾨즺)</td></tr>
+            <tr><td><code>inspection_report</code></td><td>TEXT</td><td>-</td><td>肄?紐⑥쥌 洹좎씪 ?앹쑁 ?뺤씤 ?꾨즺</td><td>?꾩옣 ?ㅼ궗 蹂닿퀬??/td></tr>
+            <tr><td><code>final_decision</code></td><td>VARCHAR(30)</td><td>-</td><td>?곹빀 (?곷냽?섎Т ?곗닔)</td><td>理쒖쥌 ?먯젙 寃곌낵</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 6. UI Mapping -->
+      <section id="sec-mapping" class="content-section">
+        <div class="section-header">
+          <i class="fa-solid fa-table-columns"></i>
+          <h2>6. DB ??愿???뚮옯??UI 留ㅽ븨 留ㅽ듃由?뒪</h2>
+        </div>
+
+        <div class="table-desc">
+          <i class="fa-solid fa-circle-info"></i> <strong>[?붾㈃ UI 留ㅽ븨 留ㅽ듃由?뒪 ???ㅻ챸]</strong> ?곗씠?곕쿋?댁뒪(MRT_DB 諛?AGRI_ADMIN_DB)????λ맂 媛??곗씠???꾨뱶媛 ???뚮옯???붾㈃???대뒓 ?꾩튂???대뼡 ?뺤떇?쇰줈 ?쒖텧?섎뒗吏 1:1濡?留ㅼ묶??二쇰뒗 湲곗??쒖엯?덈떎.
+        </div>
+
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th>?붾㈃ ?곸뿭</th>
+              <th>?곕룞 ?곗씠?곕쿋?댁뒪 諛??꾨뱶</th>
+              <th>?붾㈃ ?쒖텧 ?뺥깭</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>?곷떒 ?ㅻ뜑 & ?좎뵪 諛?/strong></td>
+              <td><code>EvSensor_real_data.sun, temperature, humidity, wind_speed</code></td>
+              <td>?좎뵪 ?꾩씠肄? 湲곗삩(28.2째C), ?듬룄(55%), ?띿냽(1.8m/s)</td>
+            </tr>
+            <tr>
+              <td><strong>?곷떒 4? ?듭떖 KPI</strong></td>
+              <td><code>Iv_real_data.Grid_Power, Add_power</code> ???먮룞?곗궛</td>
+              <td>?꾩옱異쒕젰(kW), 湲덉씪諛쒖쟾(kWh), 湲덉씪?섏씡(留뚯썝), CO?귢컧異?t)</td>
+            </tr>
+            <tr>
+              <td><strong>?먯궛 諛??섏씡 4? 移대뱶</strong></td>
+              <td><code>Iv_real_data.Add_power</code> ???먮룞?곗궛</td>
+              <td>?뱀씪/?붽컙/?곌컙/?꾩쟻 珥앹닔??留뚯썝/?듭썝), CO?귢컧異뺣웾</td>
+            </tr>
+            <tr>
+              <td><strong>?몃쾭??誘몃땲 ?뚯씠釉?/strong></td>
+              <td><code>Iv_real_data.PvPower, Grid_Power, state, created_at</code></td>
+              <td>?멸린蹂?諛쒖쟾?꾨젰, 媛?숈긽???윟 媛??, ?듭떊?쒓컙</td>
+            </tr>
+            <tr>
+              <td><strong>?ㅻ퉬 ?꾪솴 ??/strong></td>
+              <td><code>Iv_real_data.Grid_RS_Volt, Grid_R_Current, Mppt_Volt</code></td>
+              <td>3???좉컙?꾩븬(V), 3???꾨쪟(A), 4梨꾨꼸 MPPT ?꾩븬/?꾨쪟</td>
+            </tr>
+            <tr>
+              <td><strong>?먮윭 ?뺣낫 ??/strong></td>
+              <td><code>Total_ErrorHistory.Message, Level, seq, time</code></td>
+              <td>seq蹂??μ븷 硫붿떆吏, 諭껋?(二쇱쓽/寃쎄퀬), 議곗튂?섍린 踰꾪듉</td>
+            </tr>
+            <tr>
+              <td><strong>?곷냽 醫낇빀愿??& 吏??/strong></td>
+              <td><code>agri_plant_permits.actual_area_m2, compliance_ratio</code></td>
+              <td>GIS 吏??留덉빱 ?됱긽, ?곷냽?댄뻾瑜?85%), ?곹빀 諭껋?</td>
+            </tr>
+            <tr>
+              <td><strong>AI ?곸긽 利앸튃 ??/strong></td>
+              <td><code>agri_cctv_streams.stream_url, agri_activity_logs</code></td>
+              <td>4遺꾪븷 ?ㅼ떆媛?CCTV 酉곗뼱 諛??붽컙 ??꾨씪???ㅻ깄??/td>
+            </tr>
+            <tr>
+              <td><strong>吏?먯껜 ?댄뻾 由ы룷??/strong></td>
+              <td><code>agri_plant_permits + agri_activity_logs</code></td>
+              <td>吏?먯껜 怨듬Ц ?묒떇 諛??먰겢由?PDF 異쒕젰</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 7. REST APIs -->
+      <section id="sec-api" class="content-section">
+        <div class="section-header">
+          <i class="fa-solid fa-code"></i>
+          <h2>7. REST API 7? ?붾뱶?ъ씤???곸꽭 洹쒓꺽</h2>
+        </div>
+
+        <div class="sub-title">API 1. 諛쒖쟾??紐⑸줉 議고쉶 (GET <code>/api/v1/plants</code>)</div>
+        <pre><code>{
+  "success": true,
+  "data": [
+    { "id": "12139", "name": "[12139][?먯＜] ?⑤늻由?,4 (200kW)", "capacityKw": 200, "lat": 37.3422, "lng": 127.9201, "status": "watch" },
+    { "id": "12138", "name": "[12138][?먯＜] ?⑤늻由?,2 (200kW)", "capacityKw": 200, "lat": 37.3380, "lng": 127.9150, "status": "normal" },
+    { "id": "12140", "name": "[12140][?먯＜] ?⑤늻由?,6 (300kW)", "capacityKw": 300, "lat": 37.3850, "lng": 127.9950, "status": "watch" },
+    { "id": "12141", "name": "[12141][?≪꽦] 泥?젙?곷냽????(500kW)", "capacityKw": 500, "lat": 37.4917, "lng": 127.9846, "status": "normal" },
+    { "id": "12142", "name": "[12142][異섏쿇] ?뚯뼇媛??곷냽?쒖뼇愿?(150kW)", "capacityKw": 150, "lat": 37.8813, "lng": 127.6521, "status": "normal" }
+  ]
+}</code></pre>
+
+        <div class="sub-title">API 2. 諛쒖쟾???ㅼ떆媛?怨꾩륫 ?곗씠??(GET <code>/api/v1/plants/{id}/realtime</code>)</div>
+        <pre><code>{
+  "success": true,
+  "data": {
+    "plantId": "12139",
+    "name": "[?먯＜] ?⑤늻由?,4 (200kW)",
+    "capacityKw": 200,
+    "currentPowerKw": 13.7,
+    "todayGenKwh": 348,
+    "todayGenHours": 1.74,
+    "targetGenKwh": 410,
+    "monthlyGenKwh": "14,953 kWh",
+    "addPowerMwh": "102.4",
+    "weather": {
+      "cond": "?截?留묒쓬",
+      "temp": "28.2째C",
+      "humidity": "55 %",
+      "windSpeed": "1.8 m/s",
+      "inclinedIrr": "854 W/m짼"
+    },
+    "inverters": [
+      {
+        "id": 1,
+        "seq": 869,
+        "powerKw": 9.6,
+        "todayGenKwh": 78,
+        "dcV": 624.5,
+        "gridRS": 382.5,
+        "gridR": 14.5,
+        "freq": 60.0,
+        "temp": 42.1,
+        "mppt": [
+          { "ch": 1, "volt": 624.5, "curr": 3.85, "power": 2.40 },
+          { "ch": 2, "volt": 624.0, "curr": 3.85, "power": 2.40 }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+
+        <div class="sub-title">API 3. ?쒓퀎??諛쒖쟾??李⑦듃 ?곗씠??(GET <code>/api/v1/plants/{id}/charts</code>)</div>
+        <pre><code>{
+  "success": true,
+  "data": {
+    "hourlyLabels": ["06h", "08h", "10h", "12h", "14h", "16h", "18h", "20h"],
+    "hourlyActual": [0, 15, 65, 110, 75, 26, 0, 0],
+    "hourlyPredict": [0, 20, 75, 130, 95, 40, 5, 0],
+    "monthlyTrend": [510, 680, 550, 320, 710, 650, 490, 580, 610, 390, 750, 690, 520, 480, 640, 720, 590, 310, 670, 740, 291]
+  }
+}</code></pre>
+
+        <div class="sub-title">API 4. ?댁긽吏뺥썑 諛?踰뺣졊 以??寃??(GET <code>/api/v1/plants/{id}/risk-center</code>)</div>
+        <pre><code>{
+  "success": true,
+  "data": {
+    "plantId": "12139",
+    "siteName": "[?먯＜] ?⑤늻由?,4",
+    "status": "愿李????,
+    "cards": [
+      { "title": "?κ린 臾댄솢??, "desc": "?곗냽 臾댄솢??4??媛먯? (?덉슜 14???대궡 愿由?以?.", "badge": "?뺤긽 (4??", "badgeClass": "badge-success" },
+      { "title": "?묐Ъ 遺덉씪移?, "desc": "?좉퀬?묐Ъ(肄?怨??곸긽 ?먯? ?묐Ъ 94% ?쇱튂.", "badge": "?쇱튂 (?곗닔)", "badgeClass": "badge-success" },
+      { "title": "誘멸꼍?묎뎄??利앷?", "desc": "遺곸륫 寃쎄퀎遺 誘멸꼍???섏떖援ъ뿭 2.1% 利앷?.", "badge": "愿李?(+2.1%)", "badgeClass": "badge-warning" }
+    ],
+    "compliance": [
+      { "item": "?곷냽?섎Т", "evidence": "?곷냽 ?대깽??27嫄??먯? (寃쎌슫쨌?뚯쥌쨌?쒖큹)", "aiResult": "?댄뻾", "decision": "?몄젙" },
+      { "item": "?곹빀?묐Ъ ?щ같?섎Т", "evidence": "?좉퀬?묐Ъ 肄?/ ?곸긽?뺤씤 肄?(?쇱튂??94%)", "aiResult": "?쇱튂", "decision": "?몄젙" }
+    ]
+  }
+}</code></pre>
+
+        <div class="sub-title">API 5. AI CCTV ?곸긽 利앸튃 ?곗씠??(GET <code>/api/v1/plants/{id}/video-evidence</code>)</div>
+        <pre><code>{
+  "success": true,
+  "data": {
+    "siteName": "[?먯＜] ?⑤늻由?,4",
+    "camList": [
+      { "id": "CAM01", "name": "CAM 01 (?쒖륫 吏꾩엯濡?& 1援ъ뿭)", "status": "LIVE 1080P", "aiTag": "?쨼 AI 寃쎌슫 ?묒뾽 媛먯?", "crop": "?묐Ъ: 肄?, "time": "2027-04-10 14:22:05" },
+      { "id": "CAM02", "name": "CAM 02 (以묒븰 愿??& 2援ъ뿭)", "status": "LIVE 1080P", "aiTag": "?쨼 AI 愿??遺꾩궗 ?먯?", "crop": "?묐Ъ: 肄?, "time": "2027-04-10 14:22:05" }
+    ]
+  }
+}</code></pre>
+
+        <div class="sub-title">API 6. ?ъ뾽???곸꽭 諛??곷냽 ?댄뻾 ?대젰 (GET <code>/api/v1/plants/{id}/agri-detail</code>)</div>
+        <pre><code>{
+  "success": true,
+  "data": {
+    "siteId": "12139",
+    "name": "[12139][?먯＜] ?⑤늻由?,4 (200kW)",
+    "complianceScore": 85,
+    "cropMatch": true,
+    "permitCrop": "肄?,
+    "aiCrop": "肄?(?쇱튂)",
+    "areaRatio": 85,
+    "eventsCount": 27,
+    "timeline": [
+      { "date": "2027-04-15", "title": "?슌 ?몃옓??寃쎌슫 諛??뺤? ?묒뾽", "cam": "CAM01", "confidence": "98%", "review": "?몄젙" },
+      { "date": "2027-04-08", "title": "?뙮 肄??뚯쥌 諛??대옉 ?깊삎", "cam": "CAM02", "confidence": "95%", "review": "?몄젙" }
+    ]
+  }
+}</code></pre>
+
+        <div class="sub-title">API 7. ?됱젙 議곗튂 紐낅졊 ?꾩넚 (POST <code>/api/v1/actions/*</code>)</div>
+        <pre><code>// 1. ?ъ쭊 ?쒖텧 ?붿껌 (POST /api/v1/actions/request-photo)
+{ "plantId": "12139", "targetZone": "遺곸륫 寃쎄퀎遺", "dueDate": "2027-04-30" }
+
+// 2. ?꾩옣?먭? 諛곗젙 (POST /api/v1/actions/schedule-inspection)
+{ "plantId": "12139", "inspector": "源?곹샇 二쇰Т愿", "scheduledDate": "2027-05-02" }</code></pre>
+      </section>
+
+      <!-- Section 8. Frontend Integration Point -->
+      <section id="sec-frontend" class="content-section">
+        <div class="section-header">
+          <i class="fa-solid fa-laptop-code"></i>
+          <h2>8. ?꾨줎?몄뿏???곕룞 ?ъ씤??(<code>js/app.js</code>)</h2>
+        </div>
+
+        <p>?꾨줎?몄뿏?쒖뿉??API瑜??몄텧?섏뿬 ?곗씠?곕? 二쇱엯?섍퀬 ?붾㈃??媛깆떊?섎뒗 湲곕낯 ?곕룞 肄붾뱶?낅땲??</p>
+        <pre><code>// 諛쒖쟾???ㅼ떆媛?怨꾩륫 ?곗씠???몄텧 諛??먮룞 ?곕룞
+async function refreshPlantData(plantId) {
+  try {
+    const res = await fetch(`/api/v1/plants/${plantId}/realtime`, {
+      headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }
+    });
+    const json = await res.json();
+    if (json.success) {
+      // ?꾨줎?몄뿏???곗씠?곗뀑 ?숆린??      RASSI_DATA.plants[plantId] = json.data;
+      
+      // ?꾩껜 ??쒕낫??諛?湲덉쑖/?섍꼍 吏???먮룞 媛깆떊 ?몃━嫄?      DongyangApp.switchPlant(plantId);
+    }
+  } catch (err) {
+    console.error("諛쒖쟾???곗씠???곕룞 ?ㅽ뙣:", err);
+  }
+}</code></pre>
+      </section>
+
+      <!-- Section 9. Backend Implementation Sample -->
+      <section id="sec-sample" class="content-section">
+        <div class="section-header">
+          <i class="fa-brands fa-python"></i>
+          <h2>9. 諛깆뿏???섑뵆 援ы쁽 ?덉젣 (Python FastAPI)</h2>
+        </div>
+
+        <pre><code>from fastapi import FastAPI, Depends, HTTPException, Header
+from pydantic import BaseModel
+from typing import Optional
+
+app = FastAPI(title="?숈뼇?고빀 ?곷냽???쒖뼇愿?愿??API", version="2.0")
+
+@app.get("/api/v1/plants/{plant_id}/realtime")
+def get_plant_realtime(plant_id: str, authorization: Optional[str] = Header(None)):
+    if not authorization:
+        raise HTTPException(status_code=401, detail="?몄쬆 ?좏겙???꾨씫?섏뿀?듬땲??")
+    
+    # 1. MRT_DB?먯꽌 諛쒖쟾??諛?怨꾩륫移?議고쉶
+    # 2. JSON 洹쒓꺽 ?щ㎎????諛섑솚
+    return {
+        "success": True,
+        "data": {
+            "plantId": plant_id,
+            "name": "[?먯＜] ?⑤늻由?,4 (200kW)",
+            "todayGenKwh": 348,
+            "currentPowerKw": 13.7,
+            "monthlyGenKwh": "14,953 kWh"
+        }
+    }
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)</code></pre>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    function runDemoCalc() {
+      const kwh = parseFloat(document.getElementById('demoKwh').value) || 0;
+      const smp = Math.round(kwh * 131.0);
+      const rec = Math.round((kwh / 1000) * 1.2 * 71800);
+      const totalMan = ((smp + rec) / 10000).toFixed(1);
+
+      document.getElementById('demoSmp').innerText = smp.toLocaleString() + ' ??;
+      document.getElementById('demoRec').innerText = rec.toLocaleString() + ' ??;
+      document.getElementById('demoTotal').innerText = totalMan + ' 留뚯썝';
+    }
+  </script>
+</body>
+</html>
