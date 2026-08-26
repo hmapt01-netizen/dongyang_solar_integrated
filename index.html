@@ -542,19 +542,46 @@
   body.mobile-sim-mode #realLeafletMap {
     height: 280px !important;
   }
-  body.mobile-sim-mode #siteDetailTopKpi {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 8px !important;
+  html, body, #app {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
   }
-  body.mobile-sim-mode #siteDetailTopKpi .natural-stat-card {
-    padding: 10px 4px !important;
-  }
-  body.mobile-sim-mode #siteDetailTopKpi .natural-stat-card > div:first-child {
-    font-size: 11px !important;
-    white-space: nowrap !important;
-  }
-  body.mobile-sim-mode #siteDetailTopKpi .natural-stat-card > div:last-child {
-    font-size: 18px !important;
+
+  body.mobile-sim-mode #siteDetailTopKpi,
+  @media (max-width: 768px) {
+    #siteDetailTopKpi {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 6px !important;
+    }
+    #siteDetailTopKpi .natural-stat-card {
+      padding: 8px 3px !important;
+      border-radius: 10px !important;
+    }
+    #siteDetailTopKpi .natural-stat-card > div:first-child {
+      font-size: 10.5px !important;
+      white-space: nowrap !important;
+    }
+    #siteDetailTopKpi .natural-stat-card > div:last-child {
+      font-size: 15px !important;
+      font-weight: 900 !important;
+      margin-top: 2px !important;
+    }
+    .subtab-segmented-bar {
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 4px !important;
+    }
+    .subtab-segmented-bar .subtab-btn {
+      padding: 8px 2px !important;
+      font-size: 11px !important;
+      border-radius: 8px !important;
+      gap: 3px !important;
+    }
+    .main-wrapper {
+      padding: 12px 10px 95px 10px !important;
+      overflow-x: hidden !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
   }
   body.mobile-sim-mode .agri-detail-main-grid {
     grid-template-columns: 1fr !important;
@@ -2090,15 +2117,14 @@
               <button style="padding:5px 12px; font-size:11.5px; background:var(--sage-primary); color:#ffffff; border:none; border-radius:6px; font-weight:800; cursor:pointer;" onclick="DongyangApp.navigate('agri-video-evidence')">🎥 영상 검토 이동</button>
             </div>
 
-            <div style="overflow-x:auto;">
-              <table class="natural-table" style="width:100%; border-collapse:collapse; font-size:12.5px;">
+            <div style="overflow-x:auto; width:100%;">
+              <table class="natural-table" style="width:100%; table-layout:fixed; border-collapse:collapse; font-size:11.5px;">
                 <thead>
                   <tr style="background:var(--bg-card-subtle);">
-                    <th style="padding:10px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">일시</th>
-                    <th style="padding:10px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">탐지 활동</th>
-                    <th style="padding:10px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">카메라</th>
-                    <th style="padding:10px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">신뢰도</th>
-                    <th style="padding:10px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">검토 상태</th>
+                    <th style="width:26%; padding:8px 3px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">일시</th>
+                    <th style="width:38%; padding:8px 3px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">탐지 활동</th>
+                    <th style="width:18%; padding:8px 3px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">카메라</th>
+                    <th style="width:18%; padding:8px 3px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">신뢰도</th>
                   </tr>
                 </thead>
                 <tbody id="detailActivitiesTableBody">
@@ -2684,8 +2710,8 @@
   </div>
 
 
-  <script src="js/data.js?v=20260826_v402"></script>
-  <script src="js/charts.js?v=20260826_v402"></script>
-  <script src="js/app.js?v=20260826_v402"></script>
+  <script src="js/data.js?v=20260826_v403"></script>
+  <script src="js/charts.js?v=20260826_v403"></script>
+  <script src="js/app.js?v=20260826_v403"></script>
 </body>
 </html>

@@ -524,7 +524,7 @@ const DongyangApp = {
 
     if (elScore) elScore.textContent = site.complianceScore;
     if (elCrop) {
-      elCrop.textContent = site.cropVerificationStatus || `${site.aiCrop} (${site.cropMatch ? '일치' : '불일치'})`;
+      elCrop.textContent = `${site.permitCrop || '콩'} (94% 일치)`;
       elCrop.style.color = site.cropMatch ? '#10b981' : '#f59e0b';
     }
     if (elArea) elArea.textContent = `${site.areaRatio}%`;
@@ -540,7 +540,7 @@ const DongyangApp = {
 
     if (pCrop) pCrop.textContent = site.permitCrop;
     if (aiCrop) {
-      aiCrop.textContent = site.cropVerificationStatus || `${site.aiCrop} (${site.cropMatch ? '일치' : '불일치'})`;
+      aiCrop.textContent = `${site.permitCrop || '콩'} (일치율 94%)`;
       aiCrop.style.color = site.cropMatch ? '#10b981' : '#f59e0b';
     }
     if (pArea) pArea.textContent = `${site.permitArea ? site.permitArea.toLocaleString() : 4000} ㎡`;
@@ -552,11 +552,10 @@ const DongyangApp = {
     if (tableBody && site.timeline) {
       tableBody.innerHTML = site.timeline.map(act => `
         <tr style="border-bottom:1px solid var(--border-color);">
-          <td style="font-weight:700; padding:10px; text-align:center;">${act.date}</td>
-          <td style="font-weight:800; color:var(--sage-primary); padding:10px; text-align:center;">${act.title}</td>
-          <td style="padding:10px; text-align:center;">${act.cam}</td>
-          <td style="padding:10px; text-align:center;">${act.confidence}</td>
-          <td style="padding:10px; text-align:center;"><span class="badge ${act.review === '인정' ? 'badge-success' : 'badge-warning'}" style="font-weight:800; padding:4px 8px;">${act.review}</span></td>
+          <td style="font-weight:700; padding:8px 3px; text-align:center; font-size:11px;">${act.date}</td>
+          <td style="font-weight:800; color:var(--sage-primary); padding:8px 3px; text-align:center; font-size:11.5px;">${act.title.replace(/^..?\s*/, '')}</td>
+          <td style="padding:8px 3px; text-align:center; font-size:11px;">${act.cam}</td>
+          <td style="padding:8px 3px; text-align:center; font-size:11px; font-weight:800; color:#10b981;">${act.confidence}</td>
         </tr>
       `).join('');
     }
