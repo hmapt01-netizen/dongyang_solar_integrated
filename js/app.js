@@ -1487,13 +1487,15 @@ const DongyangApp = {
       const genFactor = 0.7 + (seed / 100) * 0.6; // 0.7 ~ 1.3 variation
       const gen = Math.round(baseGen * genFactor);
       const rev = (gen * 0.0203).toFixed(1);
+      const dayOfWeek = (firstDayIndex + day - 1) % 7;
+      const dayColor = dayOfWeek === 0 ? 'color:#ef4444;' : (dayOfWeek === 6 ? 'color:#3b82f6;' : '');
 
       html += `
         <div class="calendar-day-cell" onclick="DongyangApp.openDailyReportModal(${day})">
-          <div class="day-num">${day}</div>
+          <div class="day-num" style="${dayColor}">${day}</div>
           <div class="day-stats">
-            <div class="gen-text">${gen.toLocaleString()}<span style="font-size:10.5px; font-weight:700;">kWh</span></div>
-            <div class="rev-text">${rev}<span style="font-size:10px; font-weight:700;">만원</span></div>
+            <div class="gen-text">${gen.toLocaleString()}</div>
+            <div class="rev-text">${rev}만</div>
           </div>
         </div>
       `;
@@ -1605,40 +1607,40 @@ const DongyangApp = {
     // AI Diagnostics Box per Plant
     const aiReports = {
       "12139": `
-        <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
-          <span>🤖</span> <span>AI 종합 성능 진단 리포트 [원주 온누리3,4]</span>
+        <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px;">
+          AI 종합 성능 진단 리포트 [원주 온누리3,4]
         </div>
         • 2026년 7월 종합 발전 성능 지수(PR)는 <strong>${prVal}%</strong>로 우수 수준을 유지하고 있습니다.<br>
         • AI 고장 진단 엔진에 의해 인버터-2 DC 전압 미세 강하 원인이 감지되었으며, 접속반 점검으로 정상 조치되었습니다.<br>
         • 모듈 표면 세척 작업을 완료하면 월간 약 <strong>+25만원</strong>의 추가 수익 개선이 예상됩니다.
       `,
       "12138": `
-        <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
-          <span>🤖</span> <span>AI 종합 성능 진단 리포트 [원주 온누리1,2]</span>
+        <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px;">
+          AI 종합 성능 진단 리포트 [원주 온누리1,2]
         </div>
         • 2026년 7월 종합 발전 성능 지수(PR)는 <strong>${prVal}%</strong>로 최상위 발전 효율을 기록하고 있습니다.<br>
         • 모든 인버터(1~4호기) 전압 및 발전 효율 정상 가동 중이며, 영농 이행(옥수수/배추) 수광 상태 양호합니다.<br>
         • 옥수수 생육기 차광률 25.0% 유지로 영농 수확량 목표 달성이 안전하게 진행되고 있습니다.
       `,
       "12140": `
-        <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
-          <span>🤖</span> <span>AI 종합 성능 진단 리포트 [원주 온누리5,6]</span>
+        <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px;">
+          AI 종합 성능 진단 리포트 [원주 온누리5,6]
         </div>
         • 2026년 7월 종합 발전 성능 지수(PR)는 <strong>${prVal}%</strong>로 300kW 용량 대비 안정한 수익성을 유지 중입니다.<br>
         • 인버터-4 내부 방열 팬 필터 미세 먼지 누적으로 온도 47.8°C 감지. 주기적 방열 청소가 권장됩니다.<br>
         • 마늘/양파 재배구 일사량 투과율 69.8% 확보로 지자체 영농 행정 이행 완수 판정을 받았습니다.
       `,
       "12141": `
-        <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
-          <span>🤖</span> <span>AI 종합 성능 진단 리포트 [횡성 청정영농형1호]</span>
+        <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px;">
+          AI 종합 성능 진단 리포트 [횡성 청정영농형1호]
         </div>
         • 2026년 7월 대용량(500kW) 종합 발전 성능 지수(PR)는 <strong>${prVal}%</strong>로 최고 효율을 기록했습니다.<br>
         • 월 총 발전량 <strong>${julGenKwh.toLocaleString()} kWh</strong>, 월 매출 <strong>${julRevMan}만원</strong>으로 전체 5개 발전소 중 최다 수익을 달성하였습니다.<br>
         • 사과/인삼 영농 생육 관제 결과 병충해 및 잎 마름 증상 없이 지자체 검수 '우수' 등급이 부여되었습니다.
       `,
       "12142": `
-        <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
-          <span>🤖</span> <span>AI 종합 성능 진단 리포트 [춘천 소양강 영농]</span>
+        <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px;">
+          AI 종합 성능 진단 리포트 [춘천 소양강 영농]
         </div>
         • 2026년 7월 종합 발전 성능 지수(PR)는 <strong>${prVal}%</strong>로 소양강 수변 지형의 모듈 냉각 효과가 확인되었습니다.<br>
         • 소형(150kW) 특화 모듈 가동률 100.0% 달성, 월 총 매출 <strong>${julRevMan}만원</strong>을 기록하였습니다.<br>
@@ -1779,7 +1781,7 @@ const DongyangApp = {
           <td style="font-size:12px; color:var(--text-secondary); text-align:left; line-height:1.5;">${e.desc}</td>
           <td>
             <span class="badge ${isWarn ? 'badge-warning' : 'badge-success'}" style="cursor:${isWarn ? 'pointer' : 'default'}; font-weight:800; padding:4px 8px;" onclick="${isWarn ? `DongyangApp.resolveErrorLog(${idx})` : ''}">
-              ${isWarn ? '⚙️ 조치하기' : '✅ 해제완료'}
+              ${isWarn ? '조치하기' : '해제완료'}
             </span>
           </td>
         </tr>
@@ -1812,15 +1814,41 @@ const DongyangApp = {
     if (!listCont || typeof RASSI_DATA === 'undefined' || !RASSI_DATA.plants) return;
 
     const allPlants = RASSI_DATA.plants;
-    const isOwner = this.currentUser && this.currentUser.role === 'owner';
+    const role = (this.currentUser && this.currentUser.role) ? this.currentUser.role : (this.currentRole || 'admin');
 
     let html = '';
-    if (isOwner) {
+
+    // 1. 발전사업자 (Owner): 소유 발전소가 2개 미만이면 목록 없이 빨간 경고창 표시
+    if (role === 'owner') {
+      const myPlantId = (this.currentUser && this.currentUser.plantId) ? this.currentUser.plantId : '12139';
+      // Find all plants owned by current owner
+      const ownedPlants = Object.keys(allPlants).filter(id => {
+        return id === myPlantId || (allPlants[id].owner && this.currentUser && this.currentUser.name && allPlants[id].owner.includes(this.currentUser.name.split(' ')[0]));
+      });
+
+      if (ownedPlants.length < 2) {
+        html = `
+          <div style="grid-column:1/-1; background:#fef2f2; border:1.5px solid #fca5a5; border-radius:12px; padding:18px 14px; text-align:center; box-sizing:border-box; width:100%;">
+            <div style="font-size:24px; margin-bottom:6px;">🔒</div>
+            <div style="font-size:14.5px; font-weight:900; color:#dc2626; margin-bottom:6px;">추가할 수 있는 발전소가 없습니다</div>
+            <div style="font-size:12px; color:#991b1b; line-height:1.6; font-weight:700;">
+              발전사업자 계정은 본인 소유의 발전소가 <strong>2개 이상</strong> 등록된 경우에만 비교 목록에 추가할 수 있습니다.<br>
+              <span style="color:#64748b; font-size:11px;">(현재 단일 발전소 소유 상태로 다른 발전소를 추가할 수 없습니다)</span>
+            </div>
+          </div>
+        `;
+        listCont.innerHTML = html;
+        return;
+      }
+    } else if (role === 'official' || role === 'supervisor') {
+      // 2. 공무원 (Official / Supervisor): 관할 지자체 안내 문구 표시 후 목록 표출
       html += `
-        <div style="grid-column:1/-1; font-size:12px; font-weight:800; color:#d06245; background:rgba(208,98,69,0.08); padding:8px 12px; border-radius:8px; border:1px solid rgba(208,98,69,0.2); margin-bottom:4px;">
-          🔒 발전사업자 권한: 본인 소유 발전소 (<strong>${allPlants[this.currentUser.plantId]?.name || '온누리3,4'}</strong>)가 기본 선택되어 있습니다. (관리자 계정은 전체 추가 가능)
+        <div style="grid-column:1/-1; background:rgba(61,90,71,0.08); border:1.5px solid var(--sage-primary); border-radius:10px; padding:10px 14px; box-sizing:border-box; width:100%; font-size:12px; font-weight:800; color:var(--sage-dark); line-height:1.5; margin-bottom:4px;">
+          🏛️ <strong>지자체 공무원 권한:</strong> 관할 지자체(강원특별자치도) 소속 영농형 태양광 사업장만 비교 목록에 추가 가능합니다.
         </div>
       `;
+    } else {
+      // 3. 관리자 (Admin): 상단 안내 문구 전혀 없음 (html = '')
     }
 
     html += Object.keys(allPlants).map(id => {
@@ -1828,15 +1856,15 @@ const DongyangApp = {
       const isAdded = this.selectedComparePlantIds.includes(id);
 
       return `
-        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:var(--bg-card); border-radius:10px; border:1px solid ${isAdded ? '#0284c7' : 'var(--border-color)'};">
-          <div>
-            <strong style="font-size:13px; color:var(--text-primary);">${p.name}</strong>
-            <div style="font-size:11px; color:var(--text-muted);">용량: ${p.capacityKw}kW | 사업주: ${p.owner ? p.owner.split(' ')[0] : '동양연합'}</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:var(--bg-card); border-radius:10px; border:1px solid ${isAdded ? '#0284c7' : 'var(--border-color)'}; box-sizing:border-box; width:100%; gap:8px;">
+          <div style="min-width:0; flex:1;">
+            <strong style="font-size:12.5px; color:var(--text-primary); display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.name}</strong>
+            <div style="font-size:11px; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">용량: ${p.capacityKw}kW | 사업주: ${p.owner ? p.owner.split(' ')[0] : '동양연합'}</div>
           </div>
           ${isAdded ? `
-            <span style="font-size:11.5px; font-weight:800; color:#0284c7; background:rgba(2,132,199,0.1); padding:4px 10px; border-radius:6px;">✓ 추가됨</span>
+            <span style="font-size:11px; font-weight:800; color:#0284c7; background:rgba(2,132,199,0.1); padding:4px 8px; border-radius:6px; white-space:nowrap; flex-shrink:0;">✓ 추가됨</span>
           ` : `
-            <button style="padding:5px 12px; background:#0284c7; color:#fff; border:none; border-radius:6px; font-weight:800; font-size:11.5px; cursor:pointer;" onclick="DongyangApp.addPlantToCompare('${id}')">➕ 추가</button>
+            <button style="padding:5px 10px; background:#0284c7; color:#fff; border:none; border-radius:6px; font-weight:800; font-size:11px; cursor:pointer; white-space:nowrap; flex-shrink:0;" onclick="DongyangApp.addPlantToCompare('${id}')">추가</button>
           `}
         </div>
       `;
@@ -1846,8 +1874,9 @@ const DongyangApp = {
   },
 
   addPlantToCompare: function(plantId) {
-    if (this.currentUser && this.currentUser.role === 'owner') {
-      alert("🔒 [발전사업자 권한 안내]\n발전 사업자 회원님은 본인 소유 발전소가 기본 1개로 설정되어 비교 분석됩니다.\n\n타 발전소 추가 조회가 필요하신 경우 [관리자(admin)] 계정으로 로그인해 주세요.");
+    const isOwner = this.currentUser && this.currentUser.role === 'owner';
+    if (isOwner) {
+      alert("🔒 [발전사업자 권한 제한]\n발전사업자는 본인 소유의 발전소가 2개 이상인 경우에만 추가 비교가 가능합니다.");
       return;
     }
     if (!this.selectedComparePlantIds.includes(plantId)) {
@@ -1892,9 +1921,9 @@ const DongyangApp = {
           <td><strong style="color:#d06245;">${p.todayRevenueMan} 만원</strong></td>
           <td>295 원/kWh</td>
           <td><strong style="color:var(--sage-dark);">${p.cropGrowthIndex}</strong></td>
-          <td><span class="badge badge-success" style="font-weight:800; padding:4px 8px;">🟢 우수</span></td>
+          <td><span class="badge badge-success" style="font-weight:800; padding:4px 8px;">우수</span></td>
           <td>
-            <button style="padding:3px 10px; font-size:11.5px; background:#fee2e2; color:#dc2626; border:1px solid #fca5a5; border-radius:6px; font-weight:800; cursor:pointer;" onclick="DongyangApp.removeComparePlant('${p.id}')" title="비교 표에서 제외">➖ 빼기</button>
+            <button style="padding:3px 10px; font-size:11.5px; background:#fee2e2; color:#dc2626; border:1px solid #fca5a5; border-radius:6px; font-weight:800; cursor:pointer;" onclick="DongyangApp.removeComparePlant('${p.id}')" title="비교 표에서 제외">제외</button>
           </td>
         </tr>
       `;
@@ -1912,7 +1941,7 @@ const DongyangApp = {
         <td><strong style="color:#d06245;">${totalRev.toFixed(1)} 만원</strong></td>
         <td>295 원/kWh</td>
         <td>95.4% (평균)</td>
-        <td><span class="badge badge-success">🟢 최적</span></td>
+        <td><span class="badge badge-success">최적</span></td>
         <td>-</td>
       </tr>
     `;

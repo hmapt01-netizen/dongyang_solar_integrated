@@ -463,13 +463,15 @@
     box-shadow: 0 4px 12px rgba(61, 90, 71, 0.25) !important;
   }
 
-  /* 📅 ORIGINAL CALENDAR DESIGN SPEC MATCHING SCREENSHOT */
+  /* 📅 ENHANCED CALENDAR STYLING (High Legibility & Crisp Proportions) */
   .natural-calendar {
     background: var(--bg-card, #ffffff);
     border: 1px solid var(--border-color, #cbd5e1);
     border-radius: 16px;
-    padding: 24px;
+    padding: 20px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+    width: 100%;
   }
 
   .calendar-grid-header {
@@ -478,12 +480,12 @@
     text-align: center;
     font-weight: 800;
     background: #edf4ef !important;
-    padding: 12px 0;
-    border-radius: 14px 14px 0 0;
+    padding: 10px 0;
+    border-radius: 12px 12px 0 0;
     color: var(--text-primary, #1e293b);
     border: 1px solid var(--border-color, #cbd5e1);
     border-bottom: none;
-    font-size: 13.5px;
+    font-size: 13px;
   }
 
   .calendar-days-grid {
@@ -492,35 +494,41 @@
     border-left: 1px solid var(--border-color, #cbd5e1);
     border-bottom: 1px solid var(--border-color, #cbd5e1);
     background: var(--bg-card, #ffffff);
+    border-radius: 0 0 12px 12px !important;
+    overflow: hidden !important;
+    gap: 0 !important;
   }
 
   .calendar-day-cell {
-    min-height: 105px;
-    border-right: 1px solid var(--border-color, #cbd5e1);
-    border-top: 1px solid var(--border-color, #cbd5e1);
-    padding: 8px 10px;
+    min-height: 95px;
+    border-right: 1px solid var(--border-color, #cbd5e1) !important;
+    border-top: 1px solid var(--border-color, #cbd5e1) !important;
+    border-radius: 0 !important;
+    padding: 8px 6px;
     background: var(--bg-card, #ffffff);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-sizing: border-box;
   }
 
   .calendar-day-cell:hover {
-    background: rgba(129, 178, 154, 0.12) !important;
+    background: rgba(129, 178, 154, 0.15) !important;
   }
 
   .calendar-day-cell.empty-cell {
     background: var(--bg-app, #f8fafc) !important;
     cursor: default;
-    opacity: 0.5;
+    opacity: 0.4;
   }
 
   .day-num {
-    font-size: 13.5px;
-    font-weight: 900;
+    font-size: 12.5px;
+    font-weight: 700;
     color: var(--text-primary, #1e293b);
+    line-height: 1;
   }
 
   .day-stats {
@@ -530,33 +538,27 @@
     justify-content: center;
     gap: 3px;
     margin-top: 4px;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
   .gen-text {
     color: #0284c7 !important;
-    font-weight: 900;
-    font-size: 13.5px;
-    text-align: center;
-  }
-
-  .gen-text span {
-    font-size: 10.5px;
     font-weight: 700;
-    margin-left: 1px;
+    font-size: 12.5px;
+    letter-spacing: -0.3px;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
   }
 
   .rev-text {
-    color: #d06245 !important;
+    color: #c2410c !important;
     font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
     text-align: center;
-    font-weight: 800;
-  }
-
-  .rev-text span {
-    font-size: 10px;
-    font-weight: 700;
-    margin-left: 1px;
+    line-height: 1.2;
+    white-space: nowrap;
   }
 
   /* 📍 Leaflet Map Pin Pill Marker Styling (No Text Overflow Outside Button) */
@@ -605,39 +607,250 @@
 
   body.mobile-sim-mode #siteDetailTopKpi {
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 6px !important;
+    gap: 8px !important;
   }
   body.mobile-sim-mode #siteDetailTopKpi .natural-stat-card {
-    padding: 8px 3px !important;
-    border-radius: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 12px 4px !important;
+    border-radius: 12px !important;
+    min-height: 72px !important;
+    box-sizing: border-box !important;
+    gap: 4px !important;
   }
   body.mobile-sim-mode #siteDetailTopKpi .natural-stat-card > div:first-child {
-    font-size: 10.5px !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    color: var(--text-muted) !important;
     white-space: nowrap !important;
+    margin-bottom: 0 !important;
   }
   body.mobile-sim-mode #siteDetailTopKpi .natural-stat-card > div:last-child {
-    font-size: 15px !important;
+    font-size: 17px !important;
     font-weight: 900 !important;
-    margin-top: 2px !important;
+    letter-spacing: -0.3px !important;
+    margin-top: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  body.mobile-sim-mode #siteDetailTopKpi #detailKpiCrop {
+    font-size: 13.5px !important;
+    font-weight: 900 !important;
+    white-space: nowrap !important;
+  }
+  body.mobile-sim-mode .natural-calendar {
+    padding: 10px 4px !important;
+    border-radius: 14px !important;
+  }
+  body.mobile-sim-mode .calendar-grid-header {
+    font-size: 12px !important;
+    padding: 8px 0 !important;
+  }
+  body.mobile-sim-mode .calendar-day-cell {
+    min-height: 80px !important;
+    padding: 6px 2px !important;
+    border-radius: 0 !important;
+    border-right: 1px solid var(--border-color, #cbd5e1) !important;
+    border-top: 1px solid var(--border-color, #cbd5e1) !important;
+    box-sizing: border-box !important;
+  }
+  body.mobile-sim-mode .day-num {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    margin-bottom: 2px !important;
+  }
+  body.mobile-sim-mode .gen-text {
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.4px !important;
+  }
+  body.mobile-sim-mode .rev-text {
+    font-size: 10.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.3px !important;
+  }
+  body.mobile-sim-mode #view-report .natural-widget {
+    padding: 14px 10px !important;
+  }
+  body.mobile-sim-mode .report-main-title {
+    font-size: 15.5px !important;
+    line-height: 1.3 !important;
+  }
+  body.mobile-sim-mode .report-summary-kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  body.mobile-sim-mode .report-kpi-card {
+    padding: 10px 6px !important;
+  }
+  body.mobile-sim-mode .report-kpi-card div:nth-child(2) {
+    font-size: 16px !important;
+  }
+  body.mobile-sim-mode #addPlantExpandPanel {
+    padding: 12px 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  body.mobile-sim-mode #addPlantPanelList {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  body.mobile-sim-mode .agri-report-container {
+    padding: 14px 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  body.mobile-sim-mode .agri-report-inner-card {
+    padding: 14px 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  body.mobile-sim-mode .agri-report-heading {
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+  }
+  body.mobile-sim-mode .agri-report-detail-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  body.mobile-sim-mode .agri-report-subcard {
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   @media (max-width: 768px) {
+    #view-report .natural-widget {
+      padding: 14px 10px !important;
+    }
+    .report-main-title {
+      font-size: 15.5px !important;
+      line-height: 1.3 !important;
+    }
+    .report-summary-kpi-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+    }
+    .report-kpi-card {
+      padding: 10px 6px !important;
+    }
+    .report-kpi-card div:nth-child(2) {
+      font-size: 16px !important;
+    }
+    #addPlantExpandPanel {
+      padding: 12px 8px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    #addPlantPanelList {
+      grid-template-columns: 1fr !important;
+      gap: 8px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .agri-report-container {
+      padding: 14px 10px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .agri-report-inner-card {
+      padding: 14px 10px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .agri-report-heading {
+      font-size: 16px !important;
+      line-height: 1.35 !important;
+    }
+    .agri-report-detail-grid {
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .agri-report-subcard {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .natural-calendar {
+      padding: 10px 4px !important;
+      border-radius: 14px !important;
+    }
+    .calendar-grid-header {
+      font-size: 12px !important;
+      padding: 8px 0 !important;
+    }
+    .calendar-days-grid {
+      gap: 0 !important;
+      border-radius: 0 0 12px 12px !important;
+      overflow: hidden !important;
+    }
+    .calendar-day-cell {
+      min-height: 80px !important;
+      padding: 6px 2px !important;
+      border-radius: 0 !important;
+      border-right: 1px solid var(--border-color, #cbd5e1) !important;
+      border-top: 1px solid var(--border-color, #cbd5e1) !important;
+      box-sizing: border-box !important;
+    }
+    .day-num {
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      margin-bottom: 2px !important;
+    }
+    .gen-text {
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.4px !important;
+    }
+    .rev-text {
+      font-size: 10.5px !important;
+      font-weight: 600 !important;
+      letter-spacing: -0.3px !important;
+    }
     #siteDetailTopKpi {
       grid-template-columns: repeat(3, 1fr) !important;
-      gap: 6px !important;
+      gap: 8px !important;
     }
     #siteDetailTopKpi .natural-stat-card {
-      padding: 8px 3px !important;
-      border-radius: 10px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 12px 4px !important;
+      border-radius: 12px !important;
+      min-height: 72px !important;
+      box-sizing: border-box !important;
+      gap: 4px !important;
     }
     #siteDetailTopKpi .natural-stat-card > div:first-child {
-      font-size: 10.5px !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      color: var(--text-muted) !important;
       white-space: nowrap !important;
+      margin-bottom: 0 !important;
     }
     #siteDetailTopKpi .natural-stat-card > div:last-child {
-      font-size: 15px !important;
+      font-size: 17px !important;
       font-weight: 900 !important;
-      margin-top: 2px !important;
+      letter-spacing: -0.3px !important;
+      margin-top: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+    }
+    #siteDetailTopKpi #detailKpiCrop {
+      font-size: 13.5px !important;
+      font-weight: 900 !important;
+      white-space: nowrap !important;
     }
     .subtab-segmented-bar {
       grid-template-columns: repeat(4, 1fr) !important;
@@ -1414,7 +1627,7 @@
               인버터-2 DC 전압이 613V로 정상 대비 -2.5% 출현. 스트링 3번 접속반 모듈 표면 세척 및 커넥터 점검 권장.
             </div>
           </div>
-          <button class="btn-header btn-terracotta ai-banner-btn" style="padding:8px 16px; font-size:12px; font-weight:800; background:#d06245; color:#fff; border:none; border-radius:8px; cursor:pointer;" onclick="DongyangApp.navigate('report')">📊 AI 진단 리포트</button>
+          <button class="btn-header btn-terracotta ai-banner-btn" style="padding:8px 16px; font-size:12px; font-weight:800; background:#d06245; color:#fff; border:none; border-radius:8px; cursor:pointer;" onclick="DongyangApp.navigate('report')">AI 진단 리포트</button>
         </section>
 
         <!-- ================================================================================= -->
@@ -1433,14 +1646,14 @@
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; text-align:center;">
             <!-- 금일 -->
             <div style="background:var(--bg-app,#fbfbfa); border-radius:10px; padding:12px; border:1px solid var(--border-color);">
-              <div style="font-size:11.5px; font-weight:800; color:var(--text-secondary);">📅 금일 발전 수익</div>
+              <div style="font-size:11.5px; font-weight:800; color:var(--text-secondary);">금일 발전 수익</div>
               <div id="asset-today-rev" style="font-size:18px; font-weight:900; color:var(--terracotta,#e07a5f); margin:4px 0;">5.9 만원</div>
               <div id="asset-today-co2" style="font-size:11px; color:var(--sage-dark,#2f4858); font-weight:700;">CO₂: 167 kgCO₂</div>
             </div>
 
             <!-- 금월 -->
             <div style="background:var(--bg-app,#fbfbfa); border-radius:10px; padding:12px; border:1px solid var(--border-color);">
-              <div style="font-size:11.5px; font-weight:800; color:var(--text-secondary);">📅 금월 발전 수익</div>
+              <div style="font-size:11.5px; font-weight:800; color:var(--text-secondary);">금월 발전 수익</div>
               <div id="asset-monthly-rev" style="font-size:18px; font-weight:900; color:var(--sage-dark,#2f4858); margin:4px 0;">195 만원</div>
               <div id="asset-monthly-co2" style="font-size:11px; color:var(--sage-dark,#2f4858); font-weight:700;">CO₂: 4.2 tCO₂</div>
             </div>
@@ -1448,14 +1661,14 @@
 
             <!-- 금년 -->
             <div style="background:var(--bg-app,#fbfbfa); border-radius:10px; padding:12px; border:1px solid var(--border-color);">
-              <div style="font-size:11.5px; font-weight:800; color:var(--text-secondary);">📅 금년 발전 수익</div>
+              <div style="font-size:11.5px; font-weight:800; color:var(--text-secondary);">금년 발전 수익</div>
               <div id="asset-yearly-rev" style="font-size:18px; font-weight:900; color:var(--sage-primary,#81b29a); margin:4px 0;">2,154 만원</div>
               <div id="asset-yearly-co2" style="font-size:11px; color:var(--sage-dark,#2f4858); font-weight:700;">CO₂: 51.1 tCO₂</div>
             </div>
 
             <!-- 누적 -->
             <div style="background:var(--bg-app,#fbfbfa); border-radius:10px; padding:12px; border:1px solid var(--border-color);">
-              <div style="font-size:11.5px; font-weight:800; color:var(--text-secondary);">📅 누적 발전 수익</div>
+              <div style="font-size:11.5px; font-weight:800; color:var(--text-secondary);">누적 발전 수익</div>
               <div id="asset-total-rev" style="font-size:18px; font-weight:900; color:#8b5cf6; margin:4px 0;">148.00 억원</div>
               <div id="asset-total-co2" style="font-size:11px; color:var(--sage-dark,#2f4858); font-weight:700;">CO₂: 364.0 tCO₂</div>
             </div>
@@ -1759,21 +1972,20 @@
       <!-- 4. CALENDAR VIEW (달력보기 - 원본 풀 스펙 디자인 연동) -->
       <section id="view-calendar" class="view-section" style="display:none;">
         <div class="natural-calendar">
-          <div class="calendar-nav-bar" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border-color);">
-            <div style="display:flex; align-items:center; gap:8px;">
-              <h2 id="calendarTitleHeader" style="font-size:16.5px; font-weight:900; white-space:nowrap; margin:0; color:var(--text-primary);">2026년 7월 발전량 달력</h2>
-              <button class="btn-header btn-terracotta" style="font-size:11px; padding:3px 10px; background:#d06245; color:#ffffff; border:none; border-radius:12px; font-weight:800; cursor:pointer;" onclick="DongyangApp.jumpToTodayCalendar()">오늘</button>
+          <div class="calendar-nav-bar" style="display:flex; flex-direction:column; gap:10px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--border-color);">
+            <div style="display:flex; align-items:center; justify-content:space-between; width:100%; flex-wrap:wrap; gap:8px;">
+              <h2 id="calendarTitleHeader" style="font-size:15.5px; font-weight:900; margin:0; color:var(--text-primary); line-height:1.3;">2026년 7월 발전량 달력</h2>
             </div>
             
-            <!-- Year/Month Controls & Original Subtitle -->
-            <div style="display:flex; align-items:center; gap:10px;">
-              <select id="calendarYearSelect" style="padding:5px 10px; border-radius:8px; border:1px solid var(--border-color); font-weight:800; font-size:12.5px; cursor:pointer; background:var(--bg-card); color:var(--text-primary);" onchange="DongyangApp.onCalendarSelectChange()">
+            <!-- Year/Month Controls & Today Button -->
+            <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; width:100%;">
+              <select id="calendarYearSelect" style="padding:5px 8px; border-radius:8px; border:1px solid var(--border-color); font-weight:800; font-size:12px; cursor:pointer; background:var(--bg-card); color:var(--text-primary);" onchange="DongyangApp.onCalendarSelectChange()">
                 <option value="2024">2024년</option>
                 <option value="2025">2025년</option>
                 <option value="2026" selected>2026년</option>
                 <option value="2027">2027년</option>
               </select>
-              <select id="calendarMonthSelect" style="padding:5px 10px; border-radius:8px; border:1px solid var(--border-color); font-weight:800; font-size:12.5px; cursor:pointer; background:var(--bg-card); color:var(--text-primary);" onchange="DongyangApp.onCalendarSelectChange()">
+              <select id="calendarMonthSelect" style="padding:5px 8px; border-radius:8px; border:1px solid var(--border-color); font-weight:800; font-size:12px; cursor:pointer; background:var(--bg-card); color:var(--text-primary);" onchange="DongyangApp.onCalendarSelectChange()">
                 <option value="1">1월</option>
                 <option value="2">2월</option>
                 <option value="3">3월</option>
@@ -1787,7 +1999,8 @@
                 <option value="11">11월</option>
                 <option value="12">12월</option>
               </select>
-              <span style="font-size:11.5px; color:var(--text-muted);">날짜를 클릭하면 상세 일간 리포트가 표시됩니다</span>
+              <button class="btn-header btn-terracotta" style="font-size:11.5px; padding:4px 10px; background:#d06245; color:#ffffff; border:none; border-radius:8px; font-weight:800; cursor:pointer; white-space:nowrap;" onclick="DongyangApp.jumpToTodayCalendar()">📅 오늘</button>
+              <span style="font-size:11px; color:var(--text-muted); width:100%; display:block; margin-top:2px;">날짜를 터치하면 상세 일간 리포트가 표시됩니다</span>
             </div>
           </div>
 
@@ -1812,51 +2025,51 @@
 
       <!-- 5. REPORT VIEW (정기 발전 및 AI 수익 분석 보고서 - PDF 다운로드 기능 탑재) -->
       <section id="view-report" class="view-section" style="display:none;">
-        <div class="natural-widget col-12" style="padding:24px; background:var(--bg-card); border-radius:18px; border:1px solid var(--border-color); margin-bottom:20px;">
+        <div class="natural-widget col-12" style="padding:24px; background:var(--bg-card); border-radius:18px; border:1px solid var(--border-color); margin-bottom:20px; box-sizing:border-box; width:100%;">
           <!-- Report Title Header & PDF / Excel Action Buttons -->
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-bottom:1px solid var(--border-color); padding-bottom:16px; margin-bottom:20px;">
+          <div class="report-header-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-bottom:1px solid var(--border-color); padding-bottom:16px; margin-bottom:20px;">
             <div>
-              <h2 style="font-size:20px; font-weight:900; color:var(--text-primary); margin:0 0 4px 0;">📊 정기 발전 및 AI 수익 분석 보고서</h2>
+              <h2 class="report-main-title" style="font-size:19px; font-weight:900; color:var(--text-primary); margin:0 0 4px 0; letter-spacing:-0.4px;">정기 발전 및 AI 수익 분석 보고서</h2>
               <div id="reportSubTitle" style="font-size:12.5px; color:var(--text-muted); font-weight:700;">[온누리3,4] 2026년 7월 정기 종합 보고서</div>
             </div>
-            <div style="display:flex; gap:8px;">
-              <button class="btn-header btn-terracotta" style="padding:8px 16px; font-size:13px; font-weight:800; border-radius:8px; background:#d06245; color:#ffffff; border:none; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:0 3px 10px rgba(208,98,69,0.25);" onclick="DongyangApp.downloadReportPdf()">
-                <span>📄</span> <span>PDF 다운로드</span>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button class="btn-header btn-terracotta" style="padding:7px 14px; font-size:12.5px; font-weight:800; border-radius:8px; background:#d06245; color:#ffffff; border:none; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:0 3px 10px rgba(208,98,69,0.25); white-space:nowrap;" onclick="DongyangApp.downloadReportPdf()">
+                PDF 다운로드
               </button>
-              <button class="btn-header" style="padding:8px 16px; font-size:13px; font-weight:800; border-radius:8px; background:var(--bg-card-subtle); color:var(--text-primary); border:1px solid var(--border-color); cursor:pointer; display:flex; align-items:center; gap:6px;" onclick="DongyangApp.exportToExcel('reportTable', '태양광_발전_정기_보고서')">
-                <span>📊</span> <span>Excel 내보내기</span>
+              <button class="btn-header" style="padding:7px 14px; font-size:12.5px; font-weight:800; border-radius:8px; background:var(--bg-card-subtle); color:var(--text-primary); border:1px solid var(--border-color); cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap;" onclick="DongyangApp.exportToExcel('reportTable', '태양광_발전_정기_보고서')">
+                Excel 내보내기
               </button>
             </div>
           </div>
 
           <!-- Top 4 Summary Cards -->
-          <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:24px;">
-            <div style="background:var(--bg-card-subtle, #f8fafc); padding:16px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
-              <div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:6px;">월 총 발전량</div>
-              <div id="reportMonthlyGen" style="font-size:18px; font-weight:900; color:#0284c7;">15,323 kWh</div>
-              <div id="reportPrIndex" style="font-size:11px; color:#10b981; font-weight:700; margin-top:4px;">성능지수(PR) 84.2%</div>
+          <div class="report-summary-kpi-grid" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:20px; width:100%; box-sizing:border-box;">
+            <div class="report-kpi-card" style="background:var(--bg-card-subtle, #f8fafc); padding:14px 10px; border-radius:12px; border:1px solid var(--border-color); text-align:center; box-sizing:border-box;">
+              <div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:4px; white-space:nowrap;">월 총 발전량</div>
+              <div id="reportMonthlyGen" style="font-size:18px; font-weight:900; color:#0284c7; letter-spacing:-0.3px;">15,323 kWh</div>
+              <div id="reportPrIndex" style="font-size:11px; color:#10b981; font-weight:700; margin-top:4px; white-space:nowrap;">성능지수(PR) 84.2%</div>
             </div>
-            <div style="background:var(--bg-card-subtle, #f8fafc); padding:16px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
-              <div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:6px;">월 총 매출액</div>
-              <div id="reportMonthlyRev" style="font-size:18px; font-weight:900; color:#d06245;">310.8 만원</div>
-              <div id="reportSmpRecBreakdown" style="font-size:11px; color:var(--text-muted); font-weight:700; margin-top:4px;">SMP 200.7만 / REC 110만</div>
+            <div class="report-kpi-card" style="background:var(--bg-card-subtle, #f8fafc); padding:14px 10px; border-radius:12px; border:1px solid var(--border-color); text-align:center; box-sizing:border-box;">
+              <div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:4px; white-space:nowrap;">월 총 매출액</div>
+              <div id="reportMonthlyRev" style="font-size:18px; font-weight:900; color:#d06245; letter-spacing:-0.3px;">310.8 만원</div>
+              <div id="reportSmpRecBreakdown" style="font-size:11px; color:var(--text-muted); font-weight:700; margin-top:4px; white-space:nowrap;">SMP 200.7만 / REC 110만</div>
             </div>
-            <div style="background:var(--bg-card-subtle, #f8fafc); padding:16px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
-              <div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:6px;">온실가스 감축량</div>
-              <div id="reportCo2" style="font-size:18px; font-weight:900; color:#10b981;">7.2 tCO₂</div>
-              <div id="reportPineTrees" style="font-size:11px; color:var(--text-muted); font-weight:700; margin-top:4px;">소나무 1,090그루 상당</div>
+            <div class="report-kpi-card" style="background:var(--bg-card-subtle, #f8fafc); padding:14px 10px; border-radius:12px; border:1px solid var(--border-color); text-align:center; box-sizing:border-box;">
+              <div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:4px; white-space:nowrap;">온실가스 감축량</div>
+              <div id="reportCo2" style="font-size:18px; font-weight:900; color:#10b981; letter-spacing:-0.3px;">7.2 tCO₂</div>
+              <div id="reportPineTrees" style="font-size:11px; color:var(--text-muted); font-weight:700; margin-top:4px; white-space:nowrap;">소나무 1,090그루 상당</div>
             </div>
-            <div style="background:var(--bg-card-subtle, #f8fafc); padding:16px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
-              <div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:6px;">평균 일일 발전시간</div>
-              <div id="reportAvgGenHours" style="font-size:18px; font-weight:900; color:var(--sage-dark, #3d5a47);">3.88 시간</div>
-              <div id="reportOperRate" style="font-size:11px; color:#10b981; font-weight:700; margin-top:4px;">가동률 100.0%</div>
+            <div class="report-kpi-card" style="background:var(--bg-card-subtle, #f8fafc); padding:14px 10px; border-radius:12px; border:1px solid var(--border-color); text-align:center; box-sizing:border-box;">
+              <div style="font-size:12px; color:var(--text-muted); font-weight:700; margin-bottom:4px; white-space:nowrap;">평균 일일 발전시간</div>
+              <div id="reportAvgGenHours" style="font-size:18px; font-weight:900; color:var(--sage-dark, #3d5a47); letter-spacing:-0.3px;">3.88 시간</div>
+              <div id="reportOperRate" style="font-size:11px; color:#10b981; font-weight:700; margin-top:4px; white-space:nowrap;">가동률 100.0%</div>
             </div>
           </div>
 
           <!-- AI Health Assessment Box -->
-          <div id="reportAiBox" style="background:var(--sage-light, #eaf2ec); border:1px solid #c4d8cc; padding:16px 20px; border-radius:12px; font-size:13.5px; line-height:1.7; color:var(--text-primary); margin-bottom:24px;">
-            <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:15px; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
-              <span>🤖</span> <span>AI 종합 성능 진단 리포트</span>
+          <div id="reportAiBox" style="background:var(--sage-light, #eaf2ec); border:1px solid #c4d8cc; padding:16px 20px; border-radius:12px; font-size:13.5px; line-height:1.7; color:var(--text-primary); margin-bottom:20px; box-sizing:border-box; width:100%;">
+            <div style="font-weight:900; color:var(--sage-dark, #3d5a47); font-size:14.5px; margin-bottom:6px;">
+              AI 종합 성능 진단 리포트
             </div>
             • 2026년 7월 종합 발전 성능 지수(PR)는 <strong>84.2%</strong>로 우수 수준을 유지하고 있습니다.<br>
             • AI 고장 진단 엔진에 의해 인버터-2 DC 전압 미세 강하 원인이 감지되었으며, 접속반 점검으로 정상 조치되었습니다.<br>
@@ -1864,10 +2077,10 @@
           </div>
 
           <!-- Monthly Performance Breakdown Table -->
-          <div style="margin-top:10px;">
-            <h3 style="font-size:15px; font-weight:900; color:var(--text-primary); margin-bottom:12px;">📋 2026년 월별 발전 및 매출 상세 실적</h3>
-            <div class="table-responsive" style="overflow-x:auto;">
-              <table class="natural-table" id="reportTable" style="width:100%; text-align:center; font-size:12.5px;">
+          <div style="margin-top:10px; width:100%; box-sizing:border-box;">
+            <h3 style="font-size:15px; font-weight:900; color:var(--text-primary); margin-bottom:12px;">2026년 월별 발전 및 매출 상세 실적</h3>
+            <div class="table-responsive" style="overflow-x:auto; width:100%; -webkit-overflow-scrolling:touch; box-sizing:border-box;">
+              <table class="natural-table" id="reportTable" style="width:100%; min-width:540px; text-align:center; font-size:12px;">
                 <thead>
                   <tr style="background:var(--bg-card-subtle);">
                     <th>월</th>
@@ -1974,12 +2187,12 @@
       <section id="view-errors" class="view-section" style="display:none;">
         <div class="natural-widget col-12" style="padding:24px; background:var(--bg-card); border-radius:18px; border:1px solid var(--border-color); margin-bottom:20px;">
           <div class="widget-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:14px; margin-bottom:16px;">
-            <span class="widget-title" style="font-size:18px; font-weight:900; color:var(--text-primary);">⚠️ AI 고장 진단 및 에러 이력</span>
+            <span class="widget-title" style="font-size:18px; font-weight:900; color:var(--text-primary);">AI 고장 진단 및 에러 이력</span>
             <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
               <button id="btnErrFilterAll" class="btn-header btn-terracotta" style="font-size:11.5px; padding:5px 12px; font-weight:800; background:#d06245; color:#ffffff; border:none; border-radius:6px; cursor:pointer;" onclick="DongyangApp.filterErrorLogs('all')">전체</button>
               <button id="btnErrFilterWarn" class="btn-header" style="font-size:11.5px; padding:5px 12px; font-weight:800; background:var(--bg-card-subtle); color:var(--text-primary); border:1px solid var(--border-color); border-radius:6px; cursor:pointer;" onclick="DongyangApp.filterErrorLogs('warning')">주의 (1)</button>
               <button id="btnErrFilterRes" class="btn-header" style="font-size:11.5px; padding:5px 12px; font-weight:800; background:var(--bg-card-subtle); color:var(--text-primary); border:1px solid var(--border-color); border-radius:6px; cursor:pointer;" onclick="DongyangApp.filterErrorLogs('resolved')">해제 (2)</button>
-              <button class="btn-header" style="font-size:11.5px; padding:5px 12px; font-weight:800; background:var(--sage-primary); color:#ffffff; border:none; border-radius:6px; cursor:pointer; margin-left:4px;" onclick="DongyangApp.exportToExcel('errorLogsTable', 'AI_고장진단이력_보고서')">📊 엑셀 내보내기</button>
+              <button class="btn-header" style="font-size:11.5px; padding:5px 12px; font-weight:800; background:var(--sage-primary); color:#ffffff; border:none; border-radius:6px; cursor:pointer; margin-left:4px;" onclick="DongyangApp.exportToExcel('errorLogsTable', 'AI_고장진단이력_보고서')">엑셀 내보내기</button>
             </div>
           </div>
           <div class="table-responsive" style="overflow-x:auto;">
@@ -2010,30 +2223,30 @@
           <!-- Top Header Toolbar -->
           <div class="widget-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-bottom:1px solid var(--border-color); padding-bottom:14px; margin-bottom:16px;">
             <div>
-              <h2 style="font-size:18px; font-weight:900; color:var(--text-primary); margin:0 0 4px 0;">📊 발전소 성과(PR) 및 영농 생육 비교</h2>
+              <h2 style="font-size:18px; font-weight:900; color:var(--text-primary); margin:0 0 4px 0;">발전소 성과(PR) 및 영농 생육 비교</h2>
               <div style="font-size:12px; color:var(--text-muted); font-weight:700;">발전소를 추가 선택하여 실시간 발전 및 수익 성과를 비교 분석합니다.</div>
             </div>
             
             <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
               <button class="btn-header" style="font-size:12.5px; padding:7px 16px; font-weight:800; background:#0284c7; color:#ffffff; border:none; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:0 3px 10px rgba(2,132,199,0.25);" onclick="DongyangApp.toggleAddPlantPanel()">
-                <span>➕</span> <span>발전소 추가</span> <span id="addPlantPanelArrow" style="font-size:10px; transition:transform 0.2s ease;">▼</span>
+                <span>발전소 추가</span> <span id="addPlantPanelArrow" style="font-size:10px; transition:transform 0.2s ease;">▼</span>
               </button>
               <button class="btn-header" style="font-size:12.5px; padding:7px 16px; font-weight:800; background:var(--sage-primary); color:#ffffff; border:none; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:6px;" onclick="DongyangApp.exportToExcel('compareTable', '발전소_성과_비교_리포트')">
-                <span>📊</span> <span>엑셀 내보내기</span>
+                <span>엑셀 내보내기</span>
               </button>
             </div>
           </div>
 
           <!-- Expandable Add Plant Panel (발전소 추가 클릭시 아래로 쭉 열리는 항목 패널) -->
-          <div id="addPlantExpandPanel" style="display:none; background:var(--bg-card-subtle, #f8fafc); border:1.5px solid #0284c7; padding:16px 20px; border-radius:14px; margin-bottom:20px; box-shadow:0 4px 16px rgba(2,132,199,0.08);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid var(--border-color); padding-bottom:8px;">
-              <div style="font-size:13.5px; font-weight:900; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
-                <span>➕</span> <span>비교 목록에 발전소 추가 (클릭하여 표에 반영)</span>
+          <div id="addPlantExpandPanel" style="display:none; background:var(--bg-card-subtle, #f8fafc); border:1.5px solid #0284c7; padding:14px 12px; border-radius:14px; margin-bottom:20px; box-shadow:0 4px 16px rgba(2,132,199,0.08); width:100%; box-sizing:border-box;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px; border-bottom:1px solid var(--border-color); padding-bottom:8px;">
+              <div style="font-size:13px; font-weight:900; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
+                <span>비교 목록에 발전소 추가</span>
               </div>
-              <button style="background:none; border:none; font-size:13px; font-weight:800; color:var(--text-muted); cursor:pointer;" onclick="DongyangApp.toggleAddPlantPanel(false)">✕ 닫기</button>
+              <button style="background:none; border:none; font-size:12.5px; font-weight:800; color:var(--text-muted); cursor:pointer; white-space:nowrap;" onclick="DongyangApp.toggleAddPlantPanel(false)">✕ 닫기</button>
             </div>
             
-            <div id="addPlantPanelList" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:10px;">
+            <div id="addPlantPanelList" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:10px; width:100%; box-sizing:border-box;">
               <!-- Rendered dynamically -->
             </div>
           </div>
@@ -2085,7 +2298,7 @@
             <div style="font-size:24px; font-weight:900; color:#10b981;" id="statNormalSites">3</div>
           </div>
           <div class="card-summary clickable-kpi" id="kpiCardWatch" onclick="DongyangApp.filterMapByStatus('watch')" style="cursor:pointer; background:var(--bg-card); padding:16px; border-radius:14px; border:1.5px solid #f59e0b; text-align:center; transition:all 0.2s ease;" title="클릭 시 지도에 관찰 필요 사업장(2개)만 표출 및 줌인">
-            <div style="font-size:12.5px; font-weight:800; color:#b45309; margin-bottom:4px; white-space:nowrap;">관찰 필요 ⚠️</div>
+            <div style="font-size:12.5px; font-weight:800; color:#b45309; margin-bottom:4px; white-space:nowrap;">관찰 필요</div>
             <div style="font-size:24px; font-weight:900; color:#f59e0b;" id="statWatchSites">2</div>
           </div>
           <div class="card-summary clickable-kpi" id="kpiCardInspection" onclick="DongyangApp.filterMapByStatus('inspection')" style="cursor:pointer; background:var(--bg-card); padding:16px; border-radius:14px; border:1.5px solid var(--border-color); text-align:center; transition:all 0.2s ease;" title="클릭 시 현장점검 사업장 표출">
@@ -2132,9 +2345,9 @@
 
         <!-- Bottom: Recent Reports Table -->
         <div style="background:var(--bg-card); border-radius:16px; padding:16px; border:1.5px solid var(--border-color);">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <span style="font-size:15px; font-weight:900;">📑 최근 정기점검 리포트 현황</span>
-            <span style="font-size:12px; font-weight:700; color:var(--text-muted);">월간 자동생성 (2027년 3월분)</span>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; gap:8px;">
+            <span style="font-size:14px; font-weight:900; white-space:nowrap; color:var(--text-primary);">최근 정기점검 현황</span>
+            <span style="font-size:11.5px; font-weight:700; color:var(--text-muted); white-space:nowrap;">월간 자동생성 (2027년 3월)</span>
           </div>
 
           <div style="overflow-x:auto;">
@@ -2178,33 +2391,33 @@
 
         <!-- 서브 탭 바 (개요, 영농활동, 허가·계획, 행정조치) -->
         <div class="subtab-segmented-bar" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; margin-bottom:16px;">
-          <button class="subtab-btn active" id="subtab-overview" onclick="DongyangApp.switchAgriSubTab('overview')" style="padding:10px 6px; font-size:12.5px; font-weight:800; border-radius:12px; border:1.5px solid var(--sage-primary); background:var(--sage-primary); color:#ffffff; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 3px 10px rgba(61,90,71,0.2);"><i class="fa-solid fa-chart-line"></i> 개요</button>
-          <button class="subtab-btn" id="subtab-activity" onclick="DongyangApp.switchAgriSubTab('activity')" style="padding:10px 6px; font-size:12.5px; font-weight:800; border-radius:12px; border:1.5px solid var(--border-color); background:var(--bg-card-subtle); color:var(--text-primary); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;"><i class="fa-solid fa-wheat-awn"></i> 영농활동</button>
-          <button class="subtab-btn" id="subtab-permit" onclick="DongyangApp.switchAgriSubTab('permit')" style="padding:10px 6px; font-size:12.5px; font-weight:800; border-radius:12px; border:1.5px solid var(--border-color); background:var(--bg-card-subtle); color:var(--text-primary); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;"><i class="fa-solid fa-file-contract"></i> 허가·계획</button>
-          <button class="subtab-btn" id="subtab-action" onclick="DongyangApp.switchAgriSubTab('action')" style="padding:10px 6px; font-size:12.5px; font-weight:800; border-radius:12px; border:1.5px solid var(--border-color); background:var(--bg-card-subtle); color:var(--text-primary); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;"><i class="fa-solid fa-shield-halved"></i> 행정조치</button>
+          <button class="subtab-btn active" id="subtab-overview" onclick="DongyangApp.switchAgriSubTab('overview')" style="padding:10px 6px; font-size:13px; font-weight:800; border-radius:12px; border:1.5px solid var(--sage-primary); background:var(--sage-primary); color:#ffffff; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 10px rgba(61,90,71,0.2);">개요</button>
+          <button class="subtab-btn" id="subtab-activity" onclick="DongyangApp.switchAgriSubTab('activity')" style="padding:10px 6px; font-size:13px; font-weight:800; border-radius:12px; border:1.5px solid var(--border-color); background:var(--bg-card-subtle); color:var(--text-primary); cursor:pointer; display:flex; align-items:center; justify-content:center;">영농활동</button>
+          <button class="subtab-btn" id="subtab-permit" onclick="DongyangApp.switchAgriSubTab('permit')" style="padding:10px 6px; font-size:13px; font-weight:800; border-radius:12px; border:1.5px solid var(--border-color); background:var(--bg-card-subtle); color:var(--text-primary); cursor:pointer; display:flex; align-items:center; justify-content:center;">허가·계획</button>
+          <button class="subtab-btn" id="subtab-action" onclick="DongyangApp.switchAgriSubTab('action')" style="padding:10px 6px; font-size:13px; font-weight:800; border-radius:12px; border:1.5px solid var(--border-color); background:var(--bg-card-subtle); color:var(--text-primary); cursor:pointer; display:flex; align-items:center; justify-content:center;">행정조치</button>
         </div>
 
         <!-- 사업장 상단 5대 영농 KPI 카드 -->
         <div class="hero-stat-grid site-detail-kpi-grid card-focus-target" id="siteDetailTopKpi" style="display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; margin-bottom:16px;">
-          <div class="natural-stat-card" style="background:var(--bg-card); padding:16px; border-radius:14px; border:1px solid var(--border-color); text-align:center;">
-            <div style="font-size:12.5px; color:var(--text-muted); font-weight:800; margin-bottom:4px;">영농이행지수</div>
-            <div style="font-size:24px; font-weight:900; color:var(--sage-primary);" id="detailKpiScore">85</div>
+          <div class="natural-stat-card" style="background:var(--bg-card); padding:14px 8px; border-radius:14px; border:1px solid var(--border-color); text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:4px;">
+            <div style="font-size:12.5px; color:var(--text-muted); font-weight:800;">영농이행지수</div>
+            <div style="font-size:22px; font-weight:900; color:var(--sage-primary);" id="detailKpiScore">85</div>
           </div>
-          <div class="natural-stat-card" style="background:var(--bg-card); padding:16px; border-radius:14px; border:1px solid var(--border-color); text-align:center;">
-            <div style="font-size:12.5px; color:var(--text-muted); font-weight:800; margin-bottom:4px;">신고작물 일치</div>
-            <div style="font-size:20px; font-weight:900; color:#10b981;" id="detailKpiCrop">콩 (일치)</div>
+          <div class="natural-stat-card" style="background:var(--bg-card); padding:14px 8px; border-radius:14px; border:1px solid var(--border-color); text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:4px;">
+            <div style="font-size:12.5px; color:var(--text-muted); font-weight:800;">신고작물 일치</div>
+            <div style="font-size:18px; font-weight:900; color:#10b981;" id="detailKpiCrop">콩 (일치)</div>
           </div>
-          <div class="natural-stat-card" style="background:var(--bg-card); padding:16px; border-radius:14px; border:1px solid var(--border-color); text-align:center;">
-            <div style="font-size:12.5px; color:var(--text-muted); font-weight:800; margin-bottom:4px;">실경작면적</div>
-            <div style="font-size:24px; font-weight:900; color:var(--text-primary);" id="detailKpiArea">85%</div>
+          <div class="natural-stat-card" style="background:var(--bg-card); padding:14px 8px; border-radius:14px; border:1px solid var(--border-color); text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:4px;">
+            <div style="font-size:12.5px; color:var(--text-muted); font-weight:800;">실경작면적</div>
+            <div style="font-size:22px; font-weight:900; color:var(--text-primary);" id="detailKpiArea">85%</div>
           </div>
-          <div class="natural-stat-card" style="background:var(--bg-card); padding:16px; border-radius:14px; border:1px solid var(--border-color); text-align:center;">
-            <div style="font-size:12.5px; color:var(--text-muted); font-weight:800; margin-bottom:4px;">월간 이벤트</div>
-            <div style="font-size:24px; font-weight:900; color:var(--text-primary);" id="detailKpiEvents">27건</div>
+          <div class="natural-stat-card" style="background:var(--bg-card); padding:14px 8px; border-radius:14px; border:1px solid var(--border-color); text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:4px;">
+            <div style="font-size:12.5px; color:var(--text-muted); font-weight:800;">월간 이벤트</div>
+            <div style="font-size:22px; font-weight:900; color:var(--text-primary);" id="detailKpiEvents">27건</div>
           </div>
-          <div class="natural-stat-card" style="background:var(--bg-card); padding:16px; border-radius:14px; border:1px solid var(--border-color); text-align:center;">
-            <div style="font-size:12.5px; color:var(--text-muted); font-weight:800; margin-bottom:4px;">연속 미활동</div>
-            <div style="font-size:24px; font-weight:900; color:#10b981;" id="detailKpiInactive">4일</div>
+          <div class="natural-stat-card" style="background:var(--bg-card); padding:14px 8px; border-radius:14px; border:1px solid var(--border-color); text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:4px;">
+            <div style="font-size:12.5px; color:var(--text-muted); font-weight:800;">연속 미활동</div>
+            <div style="font-size:22px; font-weight:900; color:#10b981;" id="detailKpiInactive">4일</div>
           </div>
         </div>
 
@@ -2215,9 +2428,9 @@
           <div class="card-focus-target" style="background:var(--bg-card); border-radius:16px; padding:20px; border:1.5px solid var(--border-color);" id="detailActivitiesSection">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border-color);">
               <span style="font-size:15px; font-weight:900; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
-                <i class="fa-solid fa-calendar-check" style="color:var(--sage-primary);"></i> 월간 영농활동 이력
+                월간 영농활동 이력
               </span>
-              <button style="padding:5px 12px; font-size:11.5px; background:var(--sage-primary); color:#ffffff; border:none; border-radius:6px; font-weight:800; cursor:pointer;" onclick="DongyangApp.navigate('agri-video-evidence')">🎥 영상 검토 이동</button>
+              <button style="padding:5px 12px; font-size:11.5px; background:var(--sage-primary); color:#ffffff; border:none; border-radius:6px; font-weight:800; cursor:pointer;" onclick="DongyangApp.navigate('agri-video-evidence')">영상 검토 이동</button>
             </div>
 
             <div style="overflow-x:auto; width:100%; -webkit-overflow-scrolling:touch;">
@@ -2242,7 +2455,7 @@
           <div class="card-focus-target" style="background:var(--bg-card); border-radius:16px; padding:20px; border:1.5px solid var(--border-color);" id="detailPermitSection">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border-color);">
               <span style="font-size:15px; font-weight:900; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
-                <i class="fa-solid fa-file-pen" style="color:var(--sage-primary);"></i> 허가정보 비교
+                허가정보 비교
               </span>
             </div>
 
@@ -2279,14 +2492,14 @@
         <div class="card-focus-target" style="background:#fffbeb; border-radius:16px; padding:20px; border:1.5px solid #fde68a;" id="detailAnomaliesSection">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid #fef3c7; flex-wrap:wrap; gap:8px;">
             <span style="font-size:15px; font-weight:900; color:#b45309; display:flex; align-items:center; gap:6px;">
-              <i class="fa-solid fa-triangle-exclamation"></i> 이상징후 및 관찰 항목
+              이상징후 및 관찰 항목
             </span>
             <div style="display:flex; gap:8px; align-items:center;">
               <button class="btn-header" style="padding:6px 12px; font-size:12px; font-weight:800; background:#fef3c7; color:#92400e; border:1px solid #fde68a; border-radius:8px; cursor:pointer;" onclick="DongyangApp.requestPhotoEvidence()">
-                📷 사업자 보충 사진 요청
+                사업자 보충 사진 요청
               </button>
               <button class="btn-header" style="padding:6px 12px; font-size:12px; font-weight:800; background:#92400e; color:#ffffff; border:none; border-radius:8px; cursor:pointer;" onclick="DongyangApp.scheduleInspection()">
-                📋 현장점검 배정
+                현장점검 배정
               </button>
               <span class="badge badge-warning" style="font-weight:800; padding:4px 10px;">관찰 대상</span>
             </div>
@@ -2319,7 +2532,7 @@
         <div style="background:var(--bg-card); border-radius:16px; padding:20px; border:1.5px solid var(--border-color); box-shadow:0 2px 8px rgba(0,0,0,0.03);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border-color);">
             <span style="font-size:15px; font-weight:900; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
-              <i class="fa-solid fa-gavel" style="color:var(--sage-primary);"></i> 📑 법령상 준수사항 검토
+              법령상 준수사항 검토
             </span>
             <span style="font-size:12px; font-weight:700; color:var(--text-muted);">농지법 및 영농형 태양광 일시사용허가 기준</span>
           </div>
@@ -2476,26 +2689,26 @@
           </button>
         </div>
 
-        <div style="background:var(--bg-card); border-radius:16px; padding:28px 24px; border:1.5px solid var(--border-color); box-shadow:0 2px 8px rgba(0,0,0,0.03);">
-          <div style="border:2.5px solid var(--sage-primary); border-radius:14px; padding:24px; background:var(--bg-card-subtle); margin-bottom:20px;">
+        <div class="agri-report-container" style="background:var(--bg-card); border-radius:16px; padding:24px 20px; border:1.5px solid var(--border-color); box-shadow:0 2px 8px rgba(0,0,0,0.03); width:100%; box-sizing:border-box;">
+          <div class="agri-report-inner-card" style="border:2.5px solid var(--sage-primary); border-radius:14px; padding:20px 16px; background:var(--bg-card-subtle); margin-bottom:20px; width:100%; box-sizing:border-box;">
             <div style="font-size:11px; font-weight:800; color:var(--sage-primary); letter-spacing:1px; margin-bottom:6px;">AGRIVOLTAIC COMPLIANCE REPORT</div>
-            <h2 style="font-size:22px; font-weight:900; color:var(--text-primary); margin-bottom:8px;">AI 기반 영농형 태양광 영농이행 정기점검 보고서</h2>
-            <p style="font-size:12.5px; color:var(--text-secondary); margin-bottom:16px; line-height:1.5;">영농의무·적합작물 재배·농지 이용 적정성 확인을 위한 지자체 행정 지원 정식 보고서</p>
+            <h2 class="agri-report-heading" style="font-size:20px; font-weight:900; color:var(--text-primary); margin-bottom:8px; line-height:1.35;">AI 기반 영농형 태양광 영농이행 정기점검 보고서</h2>
+            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:16px; line-height:1.5;">영농의무·적합작물 재배·농지 이용 적정성 확인을 위한 지자체 행정 지원 정식 보고서</p>
 
-            <div style="background:var(--sage-dark, #27372b); color:#ffffff; padding:16px; border-radius:12px; margin-bottom:16px;">
+            <div style="background:var(--sage-dark, #27372b); color:#ffffff; padding:14px; border-radius:12px; margin-bottom:16px; width:100%; box-sizing:border-box;">
               <div style="font-size:11px; color:#c4d8cc; font-weight:800; margin-bottom:4px;">REPORTING PERIOD</div>
-              <div style="font-size:19px; font-weight:900; margin-bottom:6px;">2027.03.01 - 2027.03.31</div>
-              <div style="font-size:13px; font-weight:800;" id="reportSiteTitle">사업장: [12139][원주] 온누리3,4 (200kW)</div>
-              <div style="font-size:11.5px; color:#c4d8cc; margin-top:3px;" id="reportPermitNo">허가번호 2027-AGPV-12139 · 관리기관 강원특별자치도 / 원주시</div>
+              <div style="font-size:18px; font-weight:900; margin-bottom:6px;">2027.03.01 - 2027.03.31</div>
+              <div style="font-size:12.5px; font-weight:800;" id="reportSiteTitle">사업장: [12139][원주] 온누리3,4 (200kW)</div>
+              <div style="font-size:11px; color:#c4d8cc; margin-top:3px;" id="reportPermitNo">허가번호 2027-AGPV-12139 · 관리기관 강원특별자치도 / 원주시</div>
             </div>
 
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
-              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:18px; display:flex; align-items:center; justify-content:center; min-height:130px; font-weight:800; color:var(--sage-primary); text-align:center;" id="reportThumbnailEvidence">
+            <div class="agri-report-detail-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px; width:100%; box-sizing:border-box;">
+              <div class="agri-report-subcard" style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:14px; display:flex; align-items:center; justify-content:center; min-height:110px; font-weight:800; font-size:12.5px; color:var(--sage-primary); text-align:center; box-sizing:border-box; width:100%;" id="reportThumbnailEvidence">
                 📷 AI CAMERA 03 · 2027.03.28 10:42 CCTV 영상 썸네일 증빙 완료
               </div>
-              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:18px;">
+              <div class="agri-report-subcard" style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:14px; box-sizing:border-box; width:100%;">
                 <div style="font-size:11px; color:var(--text-muted); font-weight:800; margin-bottom:2px;">MONTHLY RESULT</div>
-                <div style="font-size:26px; font-weight:900; color:#10b981; margin:4px 0;" id="reportMonthlyResult">정상</div>
+                <div style="font-size:24px; font-weight:900; color:#10b981; margin:4px 0;" id="reportMonthlyResult">정상</div>
                 <span class="badge badge-success" style="font-weight:800; padding:4px 10px; margin-bottom:8px; display:inline-block;" id="reportResultBadge">영농의무 이행</span>
                 <p style="font-size:11.5px; color:var(--text-secondary); margin:0; line-height:1.5;" id="reportResultDesc">신고작물(콩)과 실제 작물이 일치하며 주요 영농활동(파종·제초 27건)이 지속적으로 확인되었습니다.</p>
               </div>
@@ -2816,8 +3029,8 @@
   </div>
 
 
-  <script src="js/data.js?v=20260826_v408"></script>
-  <script src="js/charts.js?v=20260826_v408"></script>
-  <script src="js/app.js?v=20260826_v408"></script>
+  <script src="js/data.js?v=20260826_v424"></script>
+  <script src="js/charts.js?v=20260826_v424"></script>
+  <script src="js/app.js?v=20260826_v424"></script>
 </body>
 </html>

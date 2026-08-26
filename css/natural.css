@@ -1319,21 +1319,27 @@ body.mobile-sim-mode .col-3 {
 .calendar-days-grid {
   display: grid !important;
   grid-template-columns: repeat(7, 1fr) !important;
-  border-left: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  background: var(--border-color);
-  gap: 1px;
+  border-left: 1px solid var(--border-color, #cbd5e1);
+  border-bottom: 1px solid var(--border-color, #cbd5e1);
+  background: var(--bg-card, #ffffff);
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  gap: 0 !important;
 }
 
 .calendar-day-cell {
   min-height: 105px;
   background: var(--bg-card, #ffffff);
+  border-right: 1px solid var(--border-color, #cbd5e1);
+  border-top: 1px solid var(--border-color, #cbd5e1);
+  border-radius: 0 !important;
   padding: 8px 10px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .calendar-day-cell:hover {
@@ -1421,13 +1427,15 @@ body.mobile-sim-mode #view-calendar .glass-widget {
 }
 
 body.mobile-sim-mode .calendar-day-cell {
-  min-height: 68px !important;
-  padding: 6px 3px !important;
+  min-height: 80px !important;
+  padding: 6px 2px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
   background: #ffffff !important;
-  border-radius: 6px !important;
+  border-radius: 0 !important;
+  border-right: 1px solid var(--border-color, #cbd5e1) !important;
+  border-top: 1px solid var(--border-color, #cbd5e1) !important;
   box-sizing: border-box !important;
   overflow: hidden !important;
 }
