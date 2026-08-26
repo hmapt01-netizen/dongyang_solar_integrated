@@ -266,6 +266,15 @@
     }
   }
 
+  body.mobile-sim-mode .sidebar-bottom-section {
+    display: none !important;
+  }
+  @media (max-width: 768px) {
+    .sidebar-bottom-section {
+      display: none !important;
+    }
+  }
+
   /* 🔲 4-COLUMN COMPACT GRID (4개씩 2줄 = 총 8개 버튼!) */
   body.mobile-sim-mode .nav-list {
     display: grid !important;
@@ -335,6 +344,53 @@
       background: var(--bg-card-subtle, #f8faf9) !important;
       border: 1px solid var(--border-color, #cbd5e1) !important;
       box-sizing: border-box !important;
+    }
+  }
+
+  /* 🌟 MOBILE ACTIVE NAV BUTTON (Solid Sage Background + Crisp White Text) */
+  body.mobile-sim-mode .nav-item.active .nav-link {
+    background: var(--sage-primary, #3d5a47) !important;
+    border-color: var(--sage-primary, #3d5a47) !important;
+    box-shadow: 0 4px 12px rgba(61, 90, 71, 0.3) !important;
+  }
+  body.mobile-sim-mode .nav-item.active .nav-link span {
+    color: #ffffff !important;
+    font-weight: 900 !important;
+  }
+  body.mobile-sim-mode .nav-item.active .nav-link .nav-icon-svg {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+  }
+  body.mobile-sim-mode .nav-item:not(.active) .nav-link span {
+    color: var(--text-primary, #1e293b) !important;
+    font-weight: 800 !important;
+  }
+  body.mobile-sim-mode .nav-item:not(.active) .nav-link .nav-icon-svg {
+    fill: var(--text-secondary, #64748b) !important;
+    color: var(--text-secondary, #64748b) !important;
+  }
+
+  @media (max-width: 768px) {
+    .nav-item.active .nav-link {
+      background: var(--sage-primary, #3d5a47) !important;
+      border-color: var(--sage-primary, #3d5a47) !important;
+      box-shadow: 0 4px 12px rgba(61, 90, 71, 0.3) !important;
+    }
+    .nav-item.active .nav-link span {
+      color: #ffffff !important;
+      font-weight: 900 !important;
+    }
+    .nav-item.active .nav-link .nav-icon-svg {
+      fill: #ffffff !important;
+      color: #ffffff !important;
+    }
+    body:not(.mobile-sim-mode) .nav-item:not(.active) .nav-link span {
+      color: var(--text-primary, #1e293b) !important;
+      font-weight: 800 !important;
+    }
+    body:not(.mobile-sim-mode) .nav-item:not(.active) .nav-link .nav-icon-svg {
+      fill: var(--text-secondary, #64748b) !important;
+      color: var(--text-secondary, #64748b) !important;
     }
   }
 
@@ -547,7 +603,24 @@
     max-width: 100vw !important;
   }
 
-  body.mobile-sim-mode #siteDetailTopKpi,
+  body.mobile-sim-mode #siteDetailTopKpi {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+  body.mobile-sim-mode #siteDetailTopKpi .natural-stat-card {
+    padding: 8px 3px !important;
+    border-radius: 10px !important;
+  }
+  body.mobile-sim-mode #siteDetailTopKpi .natural-stat-card > div:first-child {
+    font-size: 10.5px !important;
+    white-space: nowrap !important;
+  }
+  body.mobile-sim-mode #siteDetailTopKpi .natural-stat-card > div:last-child {
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    margin-top: 2px !important;
+  }
+
   @media (max-width: 768px) {
     #siteDetailTopKpi {
       grid-template-columns: repeat(3, 1fr) !important;
@@ -575,6 +648,14 @@
       font-size: 11px !important;
       border-radius: 8px !important;
       gap: 3px !important;
+    }
+    .agri-detail-main-grid {
+      grid-template-columns: 1fr !important;
+      gap: 14px !important;
+    }
+    #riskCardsContainer {
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
     }
     .main-wrapper {
       padding: 12px 10px 95px 10px !important;
@@ -2710,8 +2791,8 @@
   </div>
 
 
-  <script src="js/data.js?v=20260826_v403"></script>
-  <script src="js/charts.js?v=20260826_v403"></script>
-  <script src="js/app.js?v=20260826_v403"></script>
+  <script src="js/data.js?v=20260826_v406"></script>
+  <script src="js/charts.js?v=20260826_v406"></script>
+  <script src="js/app.js?v=20260826_v406"></script>
 </body>
 </html>

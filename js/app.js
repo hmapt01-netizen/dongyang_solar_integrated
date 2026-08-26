@@ -389,11 +389,15 @@ const DongyangApp = {
       sidebar.classList.remove('drawer-open');
     }
 
+    // Always reset scroll to top on page navigation
+    window.scrollTo(0, 0);
+    const appEl = document.getElementById('app');
+    if (appEl) appEl.scrollTop = 0;
+
     document.querySelectorAll('.nav-item').forEach(el => {
       if (el.dataset.view === viewId) el.classList.add('active');
       else el.classList.remove('active');
     });
-
 
     document.querySelectorAll('.view-section').forEach(el => {
       el.classList.remove('active');
@@ -566,7 +570,7 @@ const DongyangApp = {
       textAnomaly.textContent = site.anomalyDesc || (site.anomalies && site.anomalies[0] ? `${site.anomalies[0].title}: ${site.anomalies[0].desc}` : "북측 경계부 미경작 의심구역이 전월 대비 2.1% 증가했습니다. 즉시 위반으로 판단하지 않고 다음 보고기간에 변화 추이를 재확인하도록 권고합니다.");
     }
 
-    this.switchAgriSubTab(this.currentAgriSubTab || 'overview');
+    this.switchAgriSubTab(this.currentAgriSubTab || 'overview', false);
   },
 
   requestPhotoEvidence: function() {
@@ -583,7 +587,7 @@ const DongyangApp = {
 
   currentAgriSubTab: 'overview',
 
-  switchAgriSubTab: function(tabName) {
+  switchAgriSubTab: function(tabName, isUserClick = true) {
     this.currentAgriSubTab = tabName;
     const tabs = ['overview', 'activity', 'permit', 'action'];
     tabs.forEach(t => {
@@ -623,7 +627,7 @@ const DongyangApp = {
       if (el) el.classList.remove('card-focus-active');
     });
 
-    // 4. 선택된 탭에 대응하는 카드 타겟 지정 (PC: 약간 커지는 효과, 폰: 해당 위치로 스크롤)
+    // 4. 선택된 탭에 대응하는 카드 타겟 지정 (사용자가 직접 클릭한 경우에만 스크롤)
     let targetCard = null;
     if (tabName === 'overview') {
       targetCard = topKpi;
@@ -638,11 +642,10 @@ const DongyangApp = {
     if (targetCard) {
       targetCard.classList.add('card-focus-active');
 
-      // 5. 모바일 화면(또는 모바일 시뮬레이터)에서는 해당 카드로 부드럽게 스크롤 이동
-      const isMobile = window.innerWidth <= 768 || document.body.classList.contains('mobile-sim-mode');
-      if (isMobile) {
+      // 사용자가 탭을 직접 클릭했을 때만 해당 위치로 부드럽게 스크롤 (초기 진입 시에는 최상단 유지)
+      if (isUserClick && tabName !== 'overview') {
         setTimeout(() => {
-          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 50);
       }
     }
