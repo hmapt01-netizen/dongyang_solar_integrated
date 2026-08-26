@@ -650,8 +650,19 @@
       gap: 3px !important;
     }
     .agri-detail-main-grid {
-      grid-template-columns: 1fr !important;
-      gap: 14px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      gap: 12px !important;
+      box-sizing: border-box !important;
+    }
+    .card-focus-target {
+      padding: 14px 10px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      overflow: hidden !important;
     }
     #riskCardsContainer {
       grid-template-columns: 1fr !important;
@@ -665,8 +676,19 @@
     }
   }
   body.mobile-sim-mode .agri-detail-main-grid {
-    grid-template-columns: 1fr !important;
-    gap: 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 12px !important;
+    box-sizing: border-box !important;
+  }
+  body.mobile-sim-mode .card-focus-target {
+    padding: 14px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
   body.mobile-sim-mode #riskCardsContainer {
     grid-template-columns: 1fr !important;
@@ -2198,14 +2220,15 @@
               <button style="padding:5px 12px; font-size:11.5px; background:var(--sage-primary); color:#ffffff; border:none; border-radius:6px; font-weight:800; cursor:pointer;" onclick="DongyangApp.navigate('agri-video-evidence')">🎥 영상 검토 이동</button>
             </div>
 
-            <div style="overflow-x:auto; width:100%;">
-              <table class="natural-table" style="width:100%; table-layout:fixed; border-collapse:collapse; font-size:11.5px;">
+            <div style="overflow-x:auto; width:100%; -webkit-overflow-scrolling:touch;">
+              <table class="natural-table" style="width:100%; min-width:480px; border-collapse:collapse; font-size:12.5px;">
                 <thead>
                   <tr style="background:var(--bg-card-subtle);">
-                    <th style="width:26%; padding:8px 3px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">일시</th>
-                    <th style="width:38%; padding:8px 3px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">탐지 활동</th>
-                    <th style="width:18%; padding:8px 3px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">카메라</th>
-                    <th style="width:18%; padding:8px 3px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">신뢰도</th>
+                    <th style="padding:10px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">일시</th>
+                    <th style="padding:10px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">탐지 활동</th>
+                    <th style="padding:10px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">카메라</th>
+                    <th style="padding:10px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">신뢰도</th>
+                    <th style="padding:10px; text-align:center; font-weight:800; border-bottom:1.5px solid var(--border-color);">검토 상태</th>
                   </tr>
                 </thead>
                 <tbody id="detailActivitiesTableBody">
@@ -2223,30 +2246,32 @@
               </span>
             </div>
 
-            <table class="natural-table" style="width:100%; border-collapse:collapse; font-size:13px;">
-              <tbody>
-                <tr style="border-bottom:1px solid var(--border-color);">
-                  <th style="width:40%; text-align:left; padding:10px 12px; font-weight:800; background:var(--bg-card-subtle);">신고 작물</th>
-                  <td style="text-align:left; padding:10px 12px; font-weight:800;" id="permitCropName">콩</td>
-                </tr>
-                <tr style="border-bottom:1px solid var(--border-color);">
-                  <th style="text-align:left; padding:10px 12px; font-weight:800; background:var(--bg-card-subtle);">AI 확인 작물</th>
-                  <td style="text-align:left; padding:10px 12px; font-weight:800; color:#10b981;" id="aiCropName">콩 (일치)</td>
-                </tr>
-                <tr style="border-bottom:1px solid var(--border-color);">
-                  <th style="text-align:left; padding:10px 12px; font-weight:800; background:var(--bg-card-subtle);">허가 면적</th>
-                  <td style="text-align:left; padding:10px 12px;" id="permitAreaSize">4,000 ㎡</td>
-                </tr>
-                <tr style="border-bottom:1px solid var(--border-color);">
-                  <th style="text-align:left; padding:10px 12px; font-weight:800; background:var(--bg-card-subtle);">실경작 면적</th>
-                  <td style="text-align:left; padding:10px 12px; font-weight:800;" id="actualAreaSize">3,400 ㎡ (85%)</td>
-                </tr>
-                <tr>
-                  <th style="text-align:left; padding:10px 12px; font-weight:800; background:var(--bg-card-subtle);">타용도 의심</th>
-                  <td style="text-align:left; padding:10px 12px; color:#10b981; font-weight:800;" id="otherUseStatus">없음 (미탐지)</td>
-                </tr>
-              </tbody>
-            </table>
+            <div style="overflow-x:auto; width:100%; -webkit-overflow-scrolling:touch;">
+              <table class="natural-table" style="width:100%; border-collapse:collapse; font-size:13px;">
+                <tbody>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <th style="width:40%; text-align:left; padding:10px 12px; font-weight:800; background:var(--bg-card-subtle);">신고 작물</th>
+                    <td style="text-align:left; padding:10px 12px; font-weight:800;" id="permitCropName">콩</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <th style="width:40%; text-align:left; padding:10px 12px; font-weight:800; background:var(--bg-card-subtle);">AI 확인 작물</th>
+                    <td style="text-align:left; padding:10px 12px; font-weight:800; color:#10b981;" id="aiCropName">콩 (일치)</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <th style="width:40%; text-align:left; padding:10px 12px; font-weight:800; background:var(--bg-card-subtle);">허가 면적</th>
+                    <td style="text-align:left; padding:10px 12px;" id="permitAreaSize">4,000 ㎡</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <th style="width:40%; text-align:left; padding:10px 12px; font-weight:800; background:var(--bg-card-subtle);">실경작 면적</th>
+                    <td style="text-align:left; padding:10px 12px; font-weight:800;" id="actualAreaSize">3,400 ㎡ (85%)</td>
+                  </tr>
+                  <tr>
+                    <th style="width:40%; text-align:left; padding:10px 12px; font-weight:800; background:var(--bg-card-subtle);">타용도 의심</th>
+                    <td style="text-align:left; padding:10px 12px; color:#10b981; font-weight:800;" id="otherUseStatus">없음 (미탐지)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
@@ -2267,7 +2292,7 @@
             </div>
           </div>
           <div style="font-size:13.5px; color:#92400e; font-weight:700; line-height:1.6;" id="detailAnomalyText">
-            북측 경계부 미경작 의심구역이 전월 대비 2.1% 증가했습니다. 즉시 위반으로 판단하지 않고 다음 보고기간에 변화 추이를 재확인하도록 권고합니다.
+            북측 경계부 미경작 의심구역: 전월 대비 2.1% 증가 · 다음 리포트 재확인 권고
           </div>
         </div>
       </section>
@@ -2791,8 +2816,8 @@
   </div>
 
 
-  <script src="js/data.js?v=20260826_v406"></script>
-  <script src="js/charts.js?v=20260826_v406"></script>
-  <script src="js/app.js?v=20260826_v406"></script>
+  <script src="js/data.js?v=20260826_v408"></script>
+  <script src="js/charts.js?v=20260826_v408"></script>
+  <script src="js/app.js?v=20260826_v408"></script>
 </body>
 </html>

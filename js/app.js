@@ -556,10 +556,11 @@ const DongyangApp = {
     if (tableBody && site.timeline) {
       tableBody.innerHTML = site.timeline.map(act => `
         <tr style="border-bottom:1px solid var(--border-color);">
-          <td style="font-weight:700; padding:8px 3px; text-align:center; font-size:11px;">${act.date}</td>
-          <td style="font-weight:800; color:var(--sage-primary); padding:8px 3px; text-align:center; font-size:11.5px;">${act.title.replace(/^..?\s*/, '')}</td>
-          <td style="padding:8px 3px; text-align:center; font-size:11px;">${act.cam}</td>
-          <td style="padding:8px 3px; text-align:center; font-size:11px; font-weight:800; color:#10b981;">${act.confidence}</td>
+          <td style="font-weight:700; padding:10px 12px; text-align:center; white-space:nowrap;">${act.date}</td>
+          <td style="font-weight:800; color:var(--sage-primary); padding:10px 12px; text-align:center; white-space:nowrap;">${act.title}</td>
+          <td style="padding:10px 12px; text-align:center; white-space:nowrap;">${act.cam}</td>
+          <td style="padding:10px 12px; text-align:center; font-weight:800; color:#10b981; white-space:nowrap;">${act.confidence}</td>
+          <td style="padding:10px 12px; text-align:center; white-space:nowrap;"><span class="badge ${act.review === '인정' ? 'badge-success' : 'badge-warning'}" style="font-weight:800; padding:4px 10px;">${act.review}</span></td>
         </tr>
       `).join('');
     }
