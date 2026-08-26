@@ -380,6 +380,27 @@ const DongyangApp = {
     this.switchPlant(this.currentPlantId);
   },
 
+  resetScrollToTop: function() {
+    const doReset = () => {
+      try {
+        window.scrollTo(0, 0);
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+        const appEl = document.getElementById('app');
+        if (appEl) appEl.scrollTop = 0;
+        const mainWrapper = document.querySelector('.main-wrapper');
+        if (mainWrapper) mainWrapper.scrollTop = 0;
+        const appContainer = document.querySelector('.app-container');
+        if (appContainer) appContainer.scrollTop = 0;
+      } catch (e) {}
+    };
+
+    doReset();
+    requestAnimationFrame(doReset);
+    setTimeout(doReset, 50);
+    setTimeout(doReset, 150);
+  },
+
   // 3. 뷰 전환 및 화면 바인딩 (Navigation)
   navigate: function(viewId) {
     this.currentView = viewId;
@@ -388,11 +409,6 @@ const DongyangApp = {
     if (sidebar && sidebar.classList.contains('drawer-open')) {
       sidebar.classList.remove('drawer-open');
     }
-
-    // Always reset scroll to top on page navigation
-    window.scrollTo(0, 0);
-    const appEl = document.getElementById('app');
-    if (appEl) appEl.scrollTop = 0;
 
     document.querySelectorAll('.nav-item').forEach(el => {
       if (el.dataset.view === viewId) el.classList.add('active');
@@ -409,6 +425,9 @@ const DongyangApp = {
       targetView.classList.add('active');
       targetView.style.display = 'block';
     }
+
+    // Always reset scroll to top on page navigation across all containers
+    this.resetScrollToTop();
 
     if (viewId === 'dashboard') {
       const plantData = RASSI_DATA.plants[this.currentPlantId] || RASSI_DATA.plants["12139"];
