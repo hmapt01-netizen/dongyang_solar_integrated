@@ -126,10 +126,10 @@ const DongyangApp = {
     const oldBadge = document.getElementById('userHeaderBadge');
     
     if (this.currentUser) {
-      const roleTag = this.currentUser.role === 'owner' ? '발전사업자' : (this.currentUser.role === 'official' ? '공무원' : '관리자');
+      const roleTag = this.currentUser.role === 'owner' ? '사업자' : (this.currentUser.role === 'official' ? '공무원' : '관리자');
       if (roleBadge) {
         roleBadge.innerHTML = `
-          <span style="font-size:11.5px; font-weight:800; color:var(--text-primary); background:var(--bg-card-subtle); padding:5px 9px; border-radius:8px; border:1px solid var(--border-color); white-space:nowrap; display:inline-block;">
+          <span class="user-role-pill" style="font-size:11.5px; font-weight:800; color:var(--text-primary); background:var(--bg-card-subtle); padding:5px 9px; border-radius:8px; border:1px solid var(--border-color); white-space:nowrap; display:inline-block;">
             ${roleTag}
           </span>
         `;
