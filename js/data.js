@@ -31,10 +31,10 @@ const USER_ACCOUNTS = {
   },
   "admin": {
     username: "admin",
-    name: "동양연합 O&M 최고 시스템 관리자",
+    name: "K 에너지 솔루션 O&M 최고 시스템 관리자",
     role: "admin",
     plantId: "all",
-    plantName: "🌐 [전체 사업장] 통합 관제 (5개 발전소)",
+    plantName: "🌐 [전체 사업장] 통합 관제",
     desc: "전체 시스템 통합 관리자 (발전 성능 & 영농이행 풀 관제)"
   }
 };

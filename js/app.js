@@ -1404,7 +1404,7 @@ const DongyangApp = {
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; 동양연합 영농형 태양광 GIS'
+      attribution: '&copy; K 에너지 솔루션 GIS'
     }).addTo(this.leafletMap);
 
     this.markersGroup = L.layerGroup().addTo(this.leafletMap);
